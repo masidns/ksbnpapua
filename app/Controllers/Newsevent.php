@@ -60,14 +60,20 @@ class Newsevent extends BaseController
                     'required'    => 'Kategori tidak boleh kosong.'
                 ]
             ],
+            'gambar' => [
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => 'Kategori tidak boleh kosong.'
+                ]
+            ],
         ])) {
             session()->setFlashdata('pesan', 'Error,Data Gagal Disimpan!');
             return redirect()->back()->withInput();
         }
-
+        $slug = url_title($this->request->getVar('judul'));
         $this->newsevent->save([
             'judul' => $this->request->getVar('judul'),
-            'slug' => $this->request->getVar('slug'),
+            'slug' => $slug,
             'gambar' => $this->request->getVar('gambar'),
             'kategori' => $this->request->getVar('kategori'),
             'keterangan' => $this->request->getVar('keterangan'),

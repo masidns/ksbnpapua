@@ -19,6 +19,7 @@ class NewseventModel extends Model
         'slug',
         'gambar',
         'kategori',
+        'keterangan',
         'users_id',
     ];
 

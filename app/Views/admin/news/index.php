@@ -36,7 +36,7 @@
                                         <a href="<?= base_url('/newsevent/create'); ?>" class="btn btn-success">Tambah data</a>
                                     </div>
                                     <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
+                                        <thead class="text-center">
                                             <tr>
                                                 <th>No.</th>
                                                 <th>Judul</th>
@@ -49,8 +49,13 @@
                                                 <tr>
                                                     <td><?= $key + 1; ?></td>
                                                     <td><?= $value->judul; ?></td>
-                                                    <td><?= $value->kategori; ?></td>
-                                                    <td><a href=""><i class="fas fa-eye"></i></a></td>
+                                                    <td>
+                                                        <?= ($value->kategori == 1)  ? 'Berita' : ''; ?>
+                                                        <?= ($value->kategori == 2)  ? 'Pengumuman' : ''; ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>

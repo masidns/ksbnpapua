@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= $title; ?></title>
-
+  <!-- icons -->
+  <link href="<?= base_url('/img'); ?>/favicon.ico" rel="icon">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -129,6 +130,22 @@
         "responsive": true,
       });
     });
+
+    // image priview
+    function previewImg() {
+      const gambar = document.querySelector('#gambar');
+      const gambarLabel = document.querySelector('.custom-file-label');
+      const imgPreview = document.querySelector('.img-preview');
+
+      gambarLabel.textContent = gambar.files[0].name;
+
+      const filegambar = new FileReader();
+      filegambar.readAsDataURL(gambar.files[0]);
+
+      filegambar.onload = function(e) {
+        imgPreview.src = e.target.result;
+      }
+    }
   </script>
 </body>
 
