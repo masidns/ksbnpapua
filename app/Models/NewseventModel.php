@@ -51,6 +51,7 @@ class NewseventModel extends Model
         # code...
         if ($slug == false) {
             return $this->db->table('newsevents')
+                ->orderBy('newsevents_id', 'DESC')
                 ->join('users', 'users.users_id = newsevents.users_id')
                 ->get()->getResult();
         }

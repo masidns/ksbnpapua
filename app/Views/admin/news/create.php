@@ -29,7 +29,7 @@
                         <div class="card-header">
                             <h3 class="card-title">News Event</h3>
                         </div>
-                        <form action="" method="" enctype="multipart/form-data">
+                        <form action="<?= base_url('/newsevent/save'); ?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <div class="card-body">
                                 <div class="row">
@@ -39,19 +39,28 @@
                                     <div class="col-sm-7">
                                         <div class="form-group">
                                             <label>Judul</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Judul">
+                                            <input type="text" name="judul" class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Judul" value="<?= (old('judul')); ?>">
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('judul'); ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Isi Berita / Pengumuman</label>
-                                            <textarea name="keterangan" id="summernote" class="summernote form-control" cols="" rows="3"></textarea>
+                                            <textarea name="keterangan" id="summernote" class="summernote form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" cols="" rows="3"><?= old('keterangan'); ?></textarea>
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('keterangan'); ?>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Kategori</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>Pilih kategori...</option>
-                                                <option>Berita</option>
-                                                <option>Pengumuman</option>
+                                            <select name="kategori" class="form-control <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>" id="exampleFormControlSelect1">
+                                                <option selected>Pilih kategori...</option>
+                                                <option value="1" <?= old('kategori') == 1 ? 'selected' : ''; ?>>Berita</option>
+                                                <option value="2" <?= old('kategori') == 2 ? 'selected' : ''; ?>>Pengumuman</option>
                                             </select>
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('kategori'); ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
