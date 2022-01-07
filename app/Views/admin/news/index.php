@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <div class="col mb-2">
+                                    <div class="mb-2">
                                         <a href="<?= base_url('/newsevent/create'); ?>" class="btn btn-success">Tambah data</a>
                                     </div>
                                     <table id="example1" class="table table-bordered table-striped">
@@ -54,7 +54,7 @@
                                                         <?= ($value->kategori == 2)  ? 'Pengumuman' : ''; ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                        <a href="<?= base_url('/newsevent/detail' . '/' . $value->slug); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -64,9 +64,6 @@
                             </div>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-
-                        </div>
                     </div>
                     <!-- /.card -->
                 </div>

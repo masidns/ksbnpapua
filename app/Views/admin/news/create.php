@@ -34,7 +34,22 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-5">
-                                        gambar
+                                        <div class="form-group row">
+                                            <div class="col-sm-11">
+                                                <!-- <br><br><br> -->
+                                                <label>Sampul</label>
+                                                <img src="<?= base_url('/img/news/default.jpg'); ?> " class="img-thumbnail img-preview">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <div class="col-sm-11">
+                                                <input type="file" name="gambar" id="gambar" class="custom-file-input <?= ($validation->hasError('gambar')) ? 'is-invalid' : ''; ?>" onchange="previewImg()">
+                                                <label class="custom-file-label" for="gambar"></label>
+                                                <div id="validationServer03Feedback" class="invalid-feedback">
+                                                    <?= $validation->getError('gambar'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-sm-7">
                                         <div class="form-group">

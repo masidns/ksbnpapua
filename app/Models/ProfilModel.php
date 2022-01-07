@@ -55,6 +55,6 @@ class ProfilModel extends Model
         }
         return $this->db->table('profils')
             ->join('users', 'profils.users_id = users.users_id')
-            ->get()->getRow();
+            ->getWhere(['id' => $id])->getRow();
     }
 }

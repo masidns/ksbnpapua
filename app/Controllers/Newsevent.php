@@ -38,14 +38,27 @@ class Newsevent extends BaseController
         return view('admin/news/create', $data);
     }
 
+    public function detail($slug)
+    {
+        # code...
+        $data = [
+            'title' => 'KSBN PAPUA - NEWS CREATE',
+            'news' => $this->newsevent->getNews($slug),
+            'validation' => \Config\Services::validation(),
+        ];
+        // dd($data);
+        return view('admin/news/detail', $data);
+    }
+
     public function save()
     {
         # code...
         if (!$this->validate([
             'judul' => [
-                'rules'    => 'required',
+                'rules'    => 'required|is_unique[newsevents.judul]',
                 'errors'    => [
-                    'required'    => 'Judul tidak boleh kosong.'
+                    'required'    => 'Judul tidak boleh kosong.',
+                    'is_unique'    => 'Judul sudah ada.'
                 ]
             ],
             'keterangan' => [
@@ -61,20 +74,31 @@ class Newsevent extends BaseController
                 ]
             ],
             'gambar' => [
-                'rules'    => 'required',
-                'errors'    => [
-                    'required'    => 'Kategori tidak boleh kosong.'
+                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar',
                 ]
             ],
         ])) {
             session()->setFlashdata('pesan', 'Error,Data Gagal Disimpan!');
             return redirect()->back()->withInput();
         }
+
+        $fileGambar = $this->request->getFile('gambar');
+        if ($fileGambar->getError() == 4) {
+            $namagambar = 'default.jpg';
+        } else {
+            $namagambar = $fileGambar->getRandomName();
+            $fileGambar->move('/img/news/', $namagambar);
+        }
+
         $slug = url_title($this->request->getVar('judul'));
         $this->newsevent->save([
             'judul' => $this->request->getVar('judul'),
             'slug' => $slug,
-            'gambar' => $this->request->getVar('gambar'),
+            'gambar' => $namagambar,
             'kategori' => $this->request->getVar('kategori'),
             'keterangan' => $this->request->getVar('keterangan'),
             'users_id' => session()->get('users_id'),

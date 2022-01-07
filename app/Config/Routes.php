@@ -33,11 +33,14 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/auth', 'auth::index');
+// profil
 $routes->get('/profil', 'profil::index', ['filter' => 'Authcek']);
 $routes->post('/profil/create', 'profil::create', ['filter' => 'Authcek']);
-$routes->post('/profil/update/(::num)', 'profil::update/$1', ['filter' => 'Authcek']);
+$routes->post('/profil/update/(:num)', 'profil::update/$1', ['filter' => 'Authcek']);
+// news
 $routes->get('/newsevent', 'newsevent::index', ['filter' => 'Authcek']);
-$routes->get('/Newsevent', 'Newsevent::index', ['filter' => 'Authcek']);
+$routes->post('/newsevent/create', 'newsevent::create', ['filter' => 'Authcek']);
+$routes->get('/newsevent/detail/(:any)', 'newsevent::detail/$1', ['filter' => 'Authcek']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
