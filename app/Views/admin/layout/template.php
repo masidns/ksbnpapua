@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Fixed Sidebar</title>
+  <title><?= $title; ?></title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets'); ?>/dist/css/adminlte.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/summernote/summernote-bs4.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -53,6 +57,46 @@
   <script src="<?= base_url('assets'); ?>/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets'); ?>/dist/js/demo.js"></script>
+  <!-- Summernote -->
+  <script src="<?= base_url('assets'); ?>/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- sweetalert2 -->
+  <script src="<?= base_url('assets'); ?>/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script>
+    // swall allert
+    var pesan = "<?= session()->getFlashdata('pesan') ?>";
+    const swal = pesan.split(',');
+    if (swal.length > 1) {
+      if (swal[0] == 'Success') {
+        Swal.fire({
+          title: 'Success!',
+          text: swal[1],
+          icon: 'success'
+        })
+      } else {
+        Swal.fire({
+          title: 'Error!',
+          text: swal[1],
+          icon: 'error'
+        })
+      }
+    }
+
+    // textarea
+    $('.summernote').summernote({
+      placeholder: 'Hello stand alone ui',
+      tabsize: 2,
+      height: 120,
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+      ]
+    });
+  </script>
 </body>
 
 </html>

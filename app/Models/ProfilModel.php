@@ -15,7 +15,6 @@ class ProfilModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id',
         'profile',
         'visi',
         'misi',
@@ -45,4 +44,17 @@ class ProfilModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getprofile($id = false)
+    {
+        # code...
+        if ($id == false) {
+            return $this->db->table('profils')
+                ->join('users', 'profils.users_id = users.id')
+                ->get()->getRow();
+        }
+        return $this->db->table('profils')
+            ->join('users', 'profils.users_id = users.id')
+            ->get()->getRow();
+    }
 }
