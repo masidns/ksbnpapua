@@ -14,7 +14,13 @@ class NewseventModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'judul',
+        'slug',
+        'gambar',
+        'kategori',
+        'users_id',
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +45,17 @@ class NewseventModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getNews($slug = false)
+    {
+        # code...
+        if ($slug == false) {
+            return $this->db->table('newsevents')
+                ->join('users', 'users.users_id = newsevents.users_id')
+                ->get()->getResult();
+        }
+        return $this->db->table('newsevents')
+            ->join('users', 'users.users_id = newsevents.users_id')
+            ->get()->getResult();
+    }
 }

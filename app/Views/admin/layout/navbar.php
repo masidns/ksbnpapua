@@ -10,7 +10,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a href="<?= base_url('/auth/logout'); ?>" class="btn btn-default">LOGOUT</a>
+            <a href="<?= base_url('/auth/logout'); ?>" class="btn btn-default"><i class="fas fa-sign-out-alt"></i> LOGOUT</a>
         </li>
     </ul>
 </nav>

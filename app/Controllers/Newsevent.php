@@ -22,7 +22,18 @@ class Newsevent extends BaseController
         //
         $data = [
             'title' => 'KSBN PAPUA - NEWS EVENT',
+            'news' => $this->newsevent->getNews(),
         ];
         return view('admin/news/index', $data);
+    }
+
+    public function create()
+    {
+        # code...
+        $data = [
+            'title' => 'KSBN PAPUA - NEWS CREATE',
+            'news' => $this->newsevent->getNews(),
+        ];
+        return view('admin/news/create', $data);
     }
 }
