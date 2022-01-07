@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/auth', 'auth::index');
 $routes->get('/profil', 'profil::index', ['filter' => 'Authcek']);
+$routes->get('/profil/create', 'profil::create', ['filter' => 'Authcek']);
+$routes->get('/profil/update/(::num)', 'profil::update/$1', ['filter' => 'Authcek']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

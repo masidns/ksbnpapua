@@ -50,11 +50,11 @@ class ProfilModel extends Model
         # code...
         if ($id == false) {
             return $this->db->table('profils')
-                ->join('users', 'profils.users_id = users.id')
+                ->join('users', 'profils.users_id = users.users_id')
                 ->get()->getRow();
         }
         return $this->db->table('profils')
-            ->join('users', 'profils.users_id = users.id')
+            ->join('users', 'profils.users_id = users.users_id')
             ->get()->getRow();
     }
 }

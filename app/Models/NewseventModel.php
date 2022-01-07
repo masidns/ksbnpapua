@@ -8,7 +8,7 @@ class NewseventModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'newsevents';
-    protected $primaryKey       = 'id';
+    protected $primaryKey       = 'newsevents_id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';

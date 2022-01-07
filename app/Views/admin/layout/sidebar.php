@@ -24,7 +24,7 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
-                    <a href="<?= base_url('/profil'); ?>" class="nav-link">
+                    <a href="<?= base_url('/profil'); ?>" class="nav-link <?= session()->get('active') == 'Profil' ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-id-card-alt"></i>
                         <p>
                             Profil
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../gallery.html" class="nav-link">
+                    <a href="<?= base_url('/newsevent'); ?>" class="nav-link <?= session()->get('active') == 'News' ? 'active' : ''; ?>">
                         <i class="nav-icon  fas fa-newspaper"></i>
                         <p>
                             News

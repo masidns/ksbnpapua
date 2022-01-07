@@ -74,7 +74,10 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <!-- <label for="exampleFormControlTextarea1">Profil</label> -->
-                                            <textarea id="summernote" class="summernote form-control" name="visi" rows="3"><?= old('visi'); ?></textarea>
+                                            <textarea id="summernote" class=" form-control <?= ($validation->hasError('visi')) ? 'is-invalid' : ''; ?>" name="visi" rows="3"><?= old('visi'); ?><?= old('visi'); ?></textarea>
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('visi'); ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,7 +103,10 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <!-- <label for="exampleFormControlTextarea1">Profil</label> -->
-                                            <textarea id="summernote" class="summernote form-control" name="misi" rows="3"></textarea>
+                                            <textarea id="summernote" class=" form-control <?= ($validation->hasError('misi')) ? 'is-invalid' : ''; ?>" name="misi" rows="3"><?= old('misi'); ?></textarea>
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('misi'); ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

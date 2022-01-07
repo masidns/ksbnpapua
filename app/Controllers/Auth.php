@@ -42,7 +42,7 @@ class Auth extends BaseController
             $cekpassword = password_verify($password, $pass);
             if ($cekpassword) {
                 $cekdata = [
-                    'id' => $data['id'],
+                    'users_id' => $data['users_id'],
                     'username' => $data['username'],
                     'email' => $data['email'],
                     'login' => TRUE

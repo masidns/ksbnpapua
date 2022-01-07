@@ -27,7 +27,7 @@
                     <!-- Default box -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Title</h3>
+                            <h3 class="card-title">PROFIL</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -37,13 +37,9 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            Start creating your amazing application!
+                            <?= $profil->profile; ?>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            Footer
-                        </div>
-                        <!-- /.card-footer-->
                     </div>
                     <!-- /.card -->
                 </div>
@@ -53,7 +49,7 @@
                     <!-- Default box -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Title</h3>
+                            <h3 class="card-title">VISI</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -62,13 +58,9 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            Start creating your amazing application!
+                            <?= $profil->visi; ?>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            Footer
-                        </div>
-                        <!-- /.card-footer-->
                     </div>
                     <!-- /.card -->
                 </div>
@@ -76,7 +68,7 @@
                     <!-- Default box -->
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Title</h3>
+                            <h3 class="card-title">MISI</h3>
 
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -85,13 +77,9 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            Start creating your amazing application!
+                            <?= $profil->misi; ?>
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            Footer
-                        </div>
-                        <!-- /.card-footer-->
                     </div>
                     <!-- /.card -->
                 </div>
@@ -101,7 +89,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col">
-                                <a href="" class="btn btn-success float-right">Perbaharui</a>
+                                <a href="<?= base_url('/profil/update') . '/' . $profil->id; ?>" class="btn btn-success float-right">Perbaharui</a>
                             </div>
                         </div>
                     </div>

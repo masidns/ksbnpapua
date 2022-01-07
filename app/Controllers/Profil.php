@@ -13,6 +13,7 @@ class Profil extends BaseController
     {
         //Do your magic here
         $this->profilmodel = new ProfilModel();
+        session()->set(['active' => 'Profil']);
     }
 
 
@@ -26,7 +27,7 @@ class Profil extends BaseController
                 'title' => 'KSBN PAPUA - Profil',
                 'profil' => $this->profilmodel->getprofile()
             ];
-            // dd($data['profil']);
+            // dd($data);
             return view('admin/profil/index', $data);
         }
     }
@@ -71,19 +72,65 @@ class Profil extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $save = $this->profilmodel->save([
-            'profil' => $this->request->getVar('profil'),
+        $this->profilmodel->save([
+            'profile' => $this->request->getVar('profil'),
             'visi' => $this->request->getVar('visi'),
             'misi' => $this->request->getVar('misi'),
-            'users_id' => session()->get('id'),
+            'users_id' => session()->get('users_id'),
         ]);
-        dd($save);
-        if ($save) {
-            session()->setFlashdata('pesan', 'Success,Data Profil berhasil diperbaharui');
-            return redirect()->to('/profil');
-        } else {
+        // dd($save);
+        session()->setFlashdata('pesan', 'Success,Data Profil berhasil diperbaharui');
+        return redirect()->to('/profil');
+    }
+
+    public function update($id)
+    {
+        # code...
+        $data = [
+            'title' => 'KSBN PAPUA - Update Profil',
+            'profil' => $this->profilmodel->getprofile($id),
+            'validation' => \Config\Services::validation()
+        ];
+        // dd($data);
+        return view('admin/profil/update', $data);
+    }
+
+    public function updating($id)
+    {
+        # code...
+        // dd($this->profilmodel->getprofile());    
+        if (!$this->validate([
+            'profil' => [
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => 'Profil tidak boleh kosong'
+                ]
+            ],
+            'visi' => [
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => 'Visi tidak boleh kosong'
+                ]
+            ],
+            'misi' => [
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => 'Misi tidak boleh kosong'
+                ]
+            ],
+        ])) {
             session()->setFlashdata('pesan', 'Error,Data gagal disimpan');
-            return redirect()->to('/profil/create');
+            return redirect()->back()->withInput();
         }
+
+        $this->profilmodel->save([
+            'id' => $id,
+            'profile' => $this->request->getVar('profil'),
+            'visi' => $this->request->getVar('visi'),
+            'misi' => $this->request->getVar('misi'),
+        ]);
+        // dd($save);
+        session()->setFlashdata('pesan', 'Success,Data Profil berhasil diperbaharui');
+        return redirect()->to('/profil');
     }
 }
