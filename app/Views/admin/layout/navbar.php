@@ -132,6 +132,9 @@
                 <i class="fas fa-th-large"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="<?= base_url('/auth/logout'); ?>" class="btn btn-default">LOGOUT</a>
+        </li>
     </ul>
 </nav>
 <!-- /.navbar -->
