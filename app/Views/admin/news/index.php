@@ -54,7 +54,9 @@
                                                         <?= ($value->kategori == 2)  ? 'Pengumuman' : ''; ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <a href="<?= base_url('/newsevent/detail' . '/' . $value->slug); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                        <a id="modal-125093" href="#modal-container-125093<?= $value->newsevents_id; ?>" role="button" class="btn btn-primary" data-toggle="modal" title="Detail Berita"><i class="fas fa-eye"></i></a>
+                                                        <a href="<?= base_url('/newsevent/update/' . $value->slug); ?>" class="btn btn-warning" title="Perbaharui data"><i class="fas fa-edit"></i></a>
+                                                        <a href="" class="btn btn-danger" title="Hapus data"><i class="fas fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -72,5 +74,54 @@
 
     </section>
     <!-- /.content -->
+
+    <!-- modal -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <?php foreach ($news as $key => $value) : ?>
+                    <div class="modal fade" id="modal-container-125093<?= $value->newsevents_id; ?>" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myModalLabel">
+                                        <?= $value->judul; ?>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="card mb-3">
+                                        <img src="<?= base_url('/img/news/' . $value->gambar); ?>" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= $value->judul; ?></h5>
+                                            <p class="card-text"><?= $value->keterangan; ?></p>
+                                            <p class="card-text"><small class="text-muted"><?= $value->kategori == 1 ? 'Berita' : ''; ?><?= $value->kategori == 2 ? 'Pengumuman' : ''; ?></small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                    <!-- <button type="button" class="btn btn-primary">
+                                        Save changes
+                                    </button> -->
+                                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Close
+                                    </button> -->
+                                    <a href="" class="btn btn-warning">Perbaharui</a>
+                                    <a href="" class="btn btn-danger">Hapus</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+
 </div>
 <?= $this->endsection(); ?>

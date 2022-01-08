@@ -38,7 +38,7 @@ class Newsevent extends BaseController
         return view('admin/news/create', $data);
     }
 
-    public function detail($slug)
+    public function update($slug)
     {
         # code...
         $data = [
@@ -47,7 +47,7 @@ class Newsevent extends BaseController
             'validation' => \Config\Services::validation(),
         ];
         // dd($data);
-        return view('admin/news/detail', $data);
+        return view('admin/news/update', $data);
     }
 
     public function save()
@@ -91,11 +91,78 @@ class Newsevent extends BaseController
             $namagambar = 'default.jpg';
         } else {
             $namagambar = $fileGambar->getRandomName();
-            $fileGambar->move('/img/news/', $namagambar);
+            $fileGambar->move('img/news/', $namagambar);
         }
 
         $slug = url_title($this->request->getVar('judul'));
         $this->newsevent->save([
+            'judul' => $this->request->getVar('judul'),
+            'slug' => $slug,
+            'gambar' => $namagambar,
+            'kategori' => $this->request->getVar('kategori'),
+            'keterangan' => $this->request->getVar('keterangan'),
+            'users_id' => session()->get('users_id'),
+        ]);
+        session()->setFlashdata('pesan', 'Success,Data berhasil disimpan!');
+        return redirect()->to('/newsevent');
+    }
+    public function updatingdata($newsevents_id)
+    {
+        # code...
+        $judullama = $this->newsevent->getNews($this->request->getVar('slug'));
+        if ($judullama->judul == $this->request->getVar('judul')) {
+            $rules = 'required';
+        } else {
+            $rules = 'required|is_unique[newsevents.judul]';
+        }
+
+        if (!$this->validate([
+            'judul' => [
+                'rules'    => $rules,
+                'errors'    => [
+                    'required'    => 'Judul tidak boleh kosong.',
+                    'is_unique'    => 'Judul sudah ada.'
+                ]
+            ],
+            'keterangan' => [
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => 'Isi Berita / Pengumuman tidak boleh kosong.'
+                ]
+            ],
+            'kategori' => [
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => 'Kategori tidak boleh kosong.'
+                ]
+            ],
+            'gambar' => [
+                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar',
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('pesan', 'Error,Data Gagal Disimpan!');
+            return redirect()->back()->withInput();
+        }
+
+        $fileGambar = $this->request->getFile('gambar');
+        if ($fileGambar->getError() == 4) {
+            $namagambar = $this->request->getVar('gambarLama');
+        } else {
+            $namagambar = $fileGambar->getRandomName();
+            $fileGambar->move('img/news/', $namagambar);
+            if ($this->request->getVar('gambarLama') != 'default.jpg') {
+                unlink('img/news/' . $this->request->getVar('gambarLama'));
+            }
+        }
+
+        $slug = url_title($this->request->getVar('judul'));
+        $this->newsevent->save([
+            'newsevents_id' => $newsevents_id,
             'judul' => $this->request->getVar('judul'),
             'slug' => $slug,
             'gambar' => $namagambar,
