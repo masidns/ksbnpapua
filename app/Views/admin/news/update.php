@@ -29,7 +29,7 @@
                         <div class="card-header">
                             <h3 class="card-title">News Event</h3>
                         </div>
-                        <form action="<?= base_url('/newsevent/updatingdata/' . $news->newsevents_id); ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('/newsevent/updating/' . $news->newsevents_id); ?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="slug" value="<?= $news->slug; ?>">
                             <input type="hidden" name="gambarLama" value="<?= $news->gambar; ?>">

@@ -106,7 +106,7 @@ class Newsevent extends BaseController
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan!');
         return redirect()->to('/newsevent');
     }
-    public function updatingdata($newsevents_id)
+    public function updating($newsevents_id)
     {
         # code...
         $judullama = $this->newsevent->getNews($this->request->getVar('slug'));
