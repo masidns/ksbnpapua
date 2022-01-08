@@ -173,4 +173,21 @@ class Newsevent extends BaseController
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan!');
         return redirect()->to('/newsevent');
     }
+
+    public function delete($newsevents_id)
+    {
+        # code...
+        $data = $this->newsevent->find($newsevents_id);
+        // dd($data['gambar']);
+        if ($data['gambar'] != 'default.jpg') {
+            unlink('img/news/' . $data['gambar']);
+        }
+        $delete = $this->newsevent->delete($newsevents_id);
+        if ($delete) {
+            session()->setFlashdata('pesan', 'Success,Data Berhasil Dihapus');
+        } else {
+            session()->setFlashdata('pesan', 'Error,Data Berhasil Dihapus');
+        }
+        return redirect()->to('/newsevent');
+    }
 }

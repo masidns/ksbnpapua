@@ -58,6 +58,6 @@ class NewseventModel extends Model
         }
         return $this->db->table('newsevents')
             ->join('users', 'newsevents.users_id = users.users_id')
-            ->getWhere(['slug' => $slug])->getRow();
+            ->getWhere(['slug' => $slug])->getRowObject();
     }
 }

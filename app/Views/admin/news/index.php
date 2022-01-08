@@ -56,7 +56,7 @@
                                                     <td class="text-center">
                                                         <a id="modal-125093" href="#modal-container-125093<?= $value->newsevents_id; ?>" role="button" class="btn btn-primary" data-toggle="modal" title="Detail Berita"><i class="fas fa-eye"></i></a>
                                                         <a href="<?= base_url('/newsevent/update/' . $value->slug); ?>" class="btn btn-warning" title="Perbaharui data"><i class="fas fa-edit"></i></a>
-                                                        <a href="" class="btn btn-danger" title="Hapus data"><i class="fas fa-trash"></i></a>
+                                                        <a href="<?= base_url('/newsevent/delete/' . $value->newsevents_id); ?>" class="btn btn-danger" title="Hapus data"><i class="fas fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
