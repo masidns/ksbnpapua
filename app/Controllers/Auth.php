@@ -19,16 +19,20 @@ class Auth extends BaseController
     public function index()
     {
         //
-        $users = $this->usersmodel->findall();
-        if (empty($users)) {
-            $data = [
-                'username' => 'Administrator',
-                'password' => password_hash('Ksbnpapua123', PASSWORD_DEFAULT),
-                'email' => 'kasbnpapua@gmail.com',
-            ];
-            $this->usersmodel->insert($data);
+        if (session()->get('login') == true) {
+            return redirect()->to('/profil');
+        } else {
+            $users = $this->usersmodel->findall();
+            if (empty($users)) {
+                $data = [
+                    'username' => 'Administrator',
+                    'password' => password_hash('Ksbnpapua123', PASSWORD_DEFAULT),
+                    'email' => 'kasbnpapua@gmail.com',
+                ];
+                $this->usersmodel->insert($data);
+            }
+            return view('auth/singin');
         }
-        return view('auth/singin');
     }
 
     public function singin()
