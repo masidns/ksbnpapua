@@ -40,17 +40,19 @@
                                             <tr>
                                                 <th>No.</th>
                                                 <th>Judul</th>
-                                                <th>Kategori</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php foreach ($order as $key => $value) : ?>
                                             <tr>
-                                                <th>No.</th>
-                                                <th>Judul</th>
-                                                <th>Kategori</th>
-                                                <th>Action</th>
+                                                <td><?= $key + 1 ?></td>
+                                                <td><?= $value->judul ?></td>
+                                                <td>
+                                                    <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                </td>
                                             </tr>
+                                            <?php endforeach ?>
                                         </tbody>
                                     </table>
                                 </div>

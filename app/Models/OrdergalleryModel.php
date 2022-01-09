@@ -42,14 +42,19 @@ class OrdergalleryModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getorder($slug = false)
+    public function getorder($idordergallery = false)
     {
         # code...
-        if ($slug == false) {
+        if ($idordergallery == false) {
             return $this->db->table('ordergallery')
+                ->orderBy('idordergallery', 'DESC')
                 ->join('newsevents', 'newsevents.newsevents_id = ordergallery.newsevents_id')
-                ->join('gallery', 'gallery.id = ordergallery.idordergallery')
+                // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
                 ->get()->getResult();
         }
+        return $this->db->table('ordergallery')
+            ->join('newsevents', 'newsevents.newsevents_id = ordergallery.newsevents_id')
+            // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
+            ->getWhere(['idordergallery' => $idordergallery])->getRowObject();
     }
 }

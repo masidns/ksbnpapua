@@ -14,7 +14,11 @@ class GalleryModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'id',
+        'gallerygambar',
+        'idordergallery',
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,4 +43,18 @@ class GalleryModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getGallery($id = false)
+    {
+        # code...
+        if($id == false){
+            return $this->db->table('gallery')
+            ->orderBy('id', 'DESC')
+            ->join('ordergallery', 'ordergallery.idordergallery = gallery.idordergallery')
+            ->get()->getResult();
+        }
+        return $this->db->table('gallery')
+        ->join('ordergallery', 'ordergallery.idordergallery = gallery.idordergallery')
+        ->get()->getRowObject();
+    }
 }
