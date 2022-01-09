@@ -47,14 +47,14 @@ class GalleryModel extends Model
     public function getGallery($id = false)
     {
         # code...
-        if($id == false){
+        if ($id == false) {
             return $this->db->table('gallery')
-            ->orderBy('id', 'DESC')
-            ->join('ordergallery', 'ordergallery.idordergallery = gallery.idordergallery')
-            ->get()->getResult();
+                ->orderBy('id', 'DESC')
+                ->join('ordergallery', 'ordergallery.idordergallery = gallery.idordergallery')
+                ->get()->getResult();
         }
         return $this->db->table('gallery')
-        ->join('ordergallery', 'ordergallery.idordergallery = gallery.idordergallery')
-        ->get()->getRowObject();
+            ->join('ordergallery', 'ordergallery.idordergallery = gallery.idordergallery')
+            ->get()->getRowObject();
     }
 }

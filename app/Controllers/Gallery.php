@@ -39,6 +39,7 @@ class Gallery extends BaseController
             'title' => 'KSBN PAPUA - Create Gallery',
             'news' => $this->newsevent->getNews(),
             'order' => $this->ordergallery->getorder(),
+            'galery' => $this->gallery->getGallery(),
             'validation' => \Config\Services::validation(),
         ];
         // dd($data);
@@ -66,27 +67,41 @@ class Gallery extends BaseController
             'newsevents_id' => $this->request->getVar('newsevents_id'),
         ]);
 
+        // mengambil id dari order
         $idorder = $this->ordergallery->getInsertID();
-        // dd($idordergallery);
-        // dd($save);
-        // if (!$this->validate([
-        //     'gallerygambar' => [
-        //         'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
-        //         'errors' => [
-        //             'max_size' => 'Ukuran gambar terlalu besar',
-        //             'is_image' => 'yang anda pilih bukan gambar',
-        //             'mime_in' => 'yang anda pilih bukan gambar',
-        //         ]
-        //     ],
-        // ])) {
-        //     session()->setFlashdata('pesan', 'Error,Data gagal disimpan!');
-        //     return redirect()->back()->withInput();
+
+        if (!$this->validate([
+            'gallerygambar' => [
+                'rules' => 'required|uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'required' => 'Tidak Boleh Kosong',
+                    'uploaded' => 'Minimal upload 1 gambar',
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar',
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('pesan', 'Error,Data gagal disimpan!');
+            return redirect()->back()->withInput();
+        }
+
+        $gallerygambar = $this->request->getFileMultiple('images');
+        dd($gallerygambar);
+        // foreach ($gambar['gambar'] as $i => $value) {
+        //     # code...
+        //     if ($value->isValid && !$value->hasMoved()) {
+        //         $newname[$i] = $value->getRandomName();
+        //         $value->move('img/gallery/', $newname[$i]);
+        //     }
         // }
 
-        $this->gallery->save([
-            'gallerygambar' => $this->request->getVar('gallerygambar'),
-            'idordergallery' => $idorder,
-        ]);
+        // dd($newname);
+
+        // $this->gallery->save([
+        //     'gallerygambar' => $newName,
+        //     'idordergallery' => $idorder,
+        // ]);
 
 
 

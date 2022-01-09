@@ -54,17 +54,19 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="">Upload Gambar</label>
-                                            <!-- <div class="custom-file">
-                                                <input type="file" name="image[]" id="gambar" class="custom-file-input <?= ($validation->hasError('gallerygambar')) ? 'is-invalid' : ''; ?>" onchange="previewImg()" multiple="true">
+                                            <div class="custom-file">
+                                                <input type="file" name="gallerygambar[]" id="gambar"
+                                                    class="custom-file-input <?= ($validation->hasError('gallerygambar')) ? 'is-invalid' : ''; ?>"
+                                                    onchange="previewImg()" multiple>
                                                 <label class="custom-file-label" for="gallerygambar">Pilih
                                                     gambar...</label>
                                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                                     <?= $validation->getError('gallerygambar'); ?>
                                                 </div>
-                                            </div> -->
-                                            <div class="form-group">
-                                                <input type="text" name="gallerygambar" class="form-control">
                                             </div>
+                                            <!-- <div class="form-group">
+                                                <input type="text" name="gallerygambar" class="form-control">
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
