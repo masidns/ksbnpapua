@@ -36,11 +36,16 @@ $routes->get('/auth', 'auth::index');
 // profil
 $routes->get('/profil', 'profil::index', ['filter' => 'Authcek']);
 $routes->get('/profil/create', 'profil::create', ['filter' => 'Authcek']);
+$routes->post('/profil/save', 'profil::save', ['filter' => 'Authcek']);
 $routes->get('/profil/update/(:num)', 'profil::update/$1', ['filter' => 'Authcek']);
 // news
 $routes->get('/newsevent', 'newsevent::index', ['filter' => 'Authcek']);
 $routes->get('/newsevent/create', 'newsevent::create', ['filter' => 'Authcek']);
 $routes->get('/newsevent/detail/(:any)', 'newsevent::detail/$1', ['filter' => 'Authcek']);
+$routes->get('/newsevent/update/(:any)', 'newsevent::update/$1', ['filter' => 'Authcek']);
+$routes->post('/newsevent/save', 'newsevent::save', ['filter' => 'Authcek']);
+$routes->post('/newsevent/updating/(:any)', 'newsevent::updating/$1', ['filter' => 'Authcek']);
+$routes->delete('/newsevent/delete/(:num)', 'newsevent::detail/$1', ['filter' => 'Authcek']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

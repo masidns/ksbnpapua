@@ -43,7 +43,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <!-- <label for="exampleFormControlTextarea1">Profil</label> -->
-                                            <textarea id="summernote" class="form-control <?= ($validation->hasError('profil')) ? 'is-invalid' : '' ?>" name="profil" rows="3"><?= (old('profil')) ? old('profil') : $profil->profile; ?></textarea>
+                                            <textarea id="summernote" class="summernote form-control <?= ($validation->hasError('profil')) ? 'is-invalid' : '' ?>" name="profil" rows="3"><?= (old('profil')) ? old('profil') : $profil->profile; ?></textarea>
                                             <div id="validationServer03Feedback" class="invalid-feedback">
                                                 <?= $validation->getError('profil'); ?>
                                             </div>
@@ -74,7 +74,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <!-- <label for="exampleFormControlTextarea1">Profil</label> -->
-                                            <textarea id="summernote" class=" form-control <?= ($validation->hasError('visi')) ? 'is-invalid' : ''; ?>" name="visi" rows="3"><?= old('visi'); ?><?= (old('visi')) ? old('visi') : $profil->visi; ?></textarea>
+                                            <textarea id="summernote" class=" summernote form-control <?= ($validation->hasError('visi')) ? 'is-invalid' : ''; ?>" name="visi" rows="3"><?= old('visi'); ?><?= (old('visi')) ? old('visi') : $profil->visi; ?></textarea>
                                             <div id="validationServer03Feedback" class="invalid-feedback">
                                                 <?= $validation->getError('visi'); ?>
                                             </div>
@@ -103,7 +103,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <!-- <label for="exampleFormControlTextarea1">Profil</label> -->
-                                            <textarea id="summernote" class=" form-control <?= ($validation->hasError('misi')) ? 'is-invalid' : ''; ?>" name="misi" rows="3"><?= (old('misi')) ? old('misi') : $profil->misi; ?></textarea>
+                                            <textarea id="summernote" class=" summernote form-control <?= ($validation->hasError('misi')) ? 'is-invalid' : ''; ?>" name="misi" rows="3"><?= (old('misi')) ? old('misi') : $profil->misi; ?></textarea>
                                             <div id="validationServer03Feedback" class="invalid-feedback">
                                                 <?= $validation->getError('misi'); ?>
                                             </div>

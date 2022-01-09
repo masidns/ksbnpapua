@@ -38,12 +38,15 @@
                                             <div class="col-sm-11">
                                                 <!-- <br><br><br> -->
                                                 <label>Sampul</label>
-                                                <img src="<?= base_url('/img/news/default.jpg'); ?> " class="img-thumbnail img-preview">
+                                                <img src="<?= base_url('/img/news/default.jpg'); ?> "
+                                                    class="img-thumbnail img-preview">
                                             </div>
                                         </div>
                                         <div class="form-group row ">
                                             <div class="col-sm-11">
-                                                <input type="file" name="gambar" id="gambar" class="custom-file-input <?= ($validation->hasError('gambar')) ? 'is-invalid' : ''; ?>" onchange="previewImg()">
+                                                <input type="file" name="gambar" id="gambar"
+                                                    class="custom-file-input <?= ($validation->hasError('gambar')) ? 'is-invalid' : ''; ?>"
+                                                    onchange="previewImg()">
                                                 <label class="custom-file-label" for="gambar"></label>
                                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                                     <?= $validation->getError('gambar'); ?>
@@ -54,24 +57,33 @@
                                     <div class="col-sm-7">
                                         <div class="form-group">
                                             <label>Judul</label>
-                                            <input type="text" name="judul" class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Judul" value="<?= (old('judul')); ?>">
+                                            <input type="text" name="judul"
+                                                class="form-control <?= ($validation->hasError('judul')) ? 'is-invalid' : ''; ?>"
+                                                id="formGroupExampleInput" placeholder="Judul"
+                                                value="<?= (old('judul')); ?>" autofocus>
                                             <div id="validationServer03Feedback" class="invalid-feedback">
                                                 <?= $validation->getError('judul'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Isi Berita / Pengumuman</label>
-                                            <textarea name="keterangan" id="summernote" class="summernote form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>" cols="" rows="3"><?= old('keterangan'); ?></textarea>
+                                            <textarea name="keterangan" id="summernote"
+                                                class="summernote form-control <?= ($validation->hasError('keterangan')) ? 'is-invalid' : ''; ?>"
+                                                cols="" rows="3"><?= old('keterangan'); ?></textarea>
                                             <div id="validationServer03Feedback" class="invalid-feedback">
                                                 <?= $validation->getError('keterangan'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Kategori</label>
-                                            <select name="kategori" class="form-control <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>" id="exampleFormControlSelect1">
-                                                <option selected>Pilih kategori...</option>
-                                                <option value="1" <?= old('kategori') == 1 ? 'selected' : ''; ?>>Berita</option>
-                                                <option value="2" <?= old('kategori') == 2 ? 'selected' : ''; ?>>Pengumuman</option>
+                                            <select name="kategori"
+                                                class="form-control <?= ($validation->hasError('kategori')) ? 'is-invalid' : ''; ?>"
+                                                id="exampleFormControlSelect1">
+                                                <option selected disabled value="">Pilih kategori...</option>
+                                                <option value="1" <?= old('kategori') == 1 ? 'selected' : ''; ?>>Berita
+                                                </option>
+                                                <option value="2" <?= old('kategori') == 2 ? 'selected' : ''; ?>>
+                                                    Pengumuman</option>
                                             </select>
                                             <div id="validationServer03Feedback" class="invalid-feedback">
                                                 <?= $validation->getError('kategori'); ?>

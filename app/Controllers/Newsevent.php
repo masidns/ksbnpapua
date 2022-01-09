@@ -70,7 +70,7 @@ class Newsevent extends BaseController
             'kategori' => [
                 'rules'    => 'required',
                 'errors'    => [
-                    'required'    => 'Kategori tidak boleh kosong.'
+                    'required'    => 'kategori tidak boleh kosong.'
                 ]
             ],
             'gambar' => [
@@ -133,7 +133,7 @@ class Newsevent extends BaseController
             'kategori' => [
                 'rules'    => 'required',
                 'errors'    => [
-                    'required'    => 'Kategori tidak boleh kosong.'
+                    'required'    => 'kategori tidak boleh kosong.'
                 ]
             ],
             'gambar' => [
