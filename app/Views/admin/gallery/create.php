@@ -58,17 +58,18 @@
                                                 <input type="file" name="gallerygambar[]" id="gambar"
                                                     class="custom-file-input <?= ($validation->hasError('gallerygambar')) ? 'is-invalid' : ''; ?>"
                                                     onchange="previewImg()" multiple="true">
-                                                <label class="custom-file-label" for="gallerygambar">Pilih
+                                                <label class="custom-file-label" for="">Pilih
                                                     gambar...</label>
                                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                                     <?= $validation->getError('gallerygambar'); ?>
                                                 </div>
                                             </div>
-                                            <!-- <div class="form-group">
-                                                <input type="text" name="gallerygambar" class="form-control">
-                                            </div> -->
                                         </div>
                                     </div>
+                                </div>
+                                <div class="container-image d-flex justify-align-content-center position-relative">
+                                    <img src="" alt="">
+
                                 </div>
                             </div>
                             <div class="card-footer">
