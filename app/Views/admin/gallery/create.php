@@ -57,7 +57,7 @@
                                             <div class="custom-file">
                                                 <input type="file" name="gallerygambar[]" id="gambar"
                                                     class="custom-file-input <?= ($validation->hasError('gallerygambar')) ? 'is-invalid' : ''; ?>"
-                                                    onchange="previewImg()" multiple>
+                                                    onchange="previewImg()" multiple="true">
                                                 <label class="custom-file-label" for="gallerygambar">Pilih
                                                     gambar...</label>
                                                 <div id="validationServer03Feedback" class="invalid-feedback">

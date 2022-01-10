@@ -59,20 +59,9 @@ class Gallery extends BaseController
                     'required'    => 'Judul tidak boleh kosong.'
                 ]
             ],
-        ])) {
-            session()->setFlashdata('pesan', 'Error,Data gagal disimpan!');
-            return redirect()->back()->withInput();
-        }
-        $this->ordergallery->save([
-            'newsevents_id' => $this->request->getVar('newsevents_id'),
-        ]);
-
-        // mengambil id dari order
-        $idorder = $this->ordergallery->getInsertID();
-
-        if (!$this->validate([
             'gallerygambar' => [
-                'rules' => 'required|uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
+                // 'rules' => 'is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'required' => 'Tidak Boleh Kosong',
                     'uploaded' => 'Minimal upload 1 gambar',
@@ -85,21 +74,67 @@ class Gallery extends BaseController
             session()->setFlashdata('pesan', 'Error,Data gagal disimpan!');
             return redirect()->back()->withInput();
         }
+        // $this->ordergallery->save([
+        //     'newsevents_id' => $this->request->getVar('newsevents_id'),
+        // ]);
 
-        $gallerygambar = $this->request->getFileMultiple('images');
-        dd($gallerygambar);
-        // foreach ($gambar['gambar'] as $i => $value) {
-        //     # code...
-        //     if ($value->isValid && !$value->hasMoved()) {
-        //         $newname[$i] = $value->getRandomName();
-        //         $value->move('img/gallery/', $newname[$i]);
-        //     }
+        // // mengambil id dari order
+        // $idorder = $this->ordergallery->getInsertID();
+
+        // if (!$this->validate([
+        //     'gallerygambar' => [
+        //         'rules' => 'required|uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
+        //         'errors' => [
+        //             'required' => 'Tidak Boleh Kosong',
+        //             'uploaded' => 'Minimal upload 1 gambar',
+        //             'max_size' => 'Ukuran gambar terlalu besar',
+        //             'is_image' => 'yang anda pilih bukan gambar',
+        //             'mime_in' => 'yang anda pilih bukan gambar',
+        //         ]
+        //     ],
+        // ])) {
+        //     session()->setFlashdata('pesan', 'Error,Data gagal disimpan!');
+        //     return redirect()->back()->withInput();
         // }
 
+
+
+        $filegambar = $this->request->getFiles();
+        // dd($gallerygambar);
+        // if ($filegambar->getError() == 4) {
+        //     $filegambar = $this->request->getVar('gallerygambar');
+        // } else {
+        //     $newname = $filegambar->getRandomName();
+        //     $filegambar->move('img/gallery/', $newname);
+        // }
+        $this->ordergallery->save([
+            'newsevents_id' => $this->request->getVar('newsevents_id'),
+        ]);
+        // mengambil id dari order
+        $idorder = $this->ordergallery->getInsertID();
+        // $i = [0];
+        // $newname = [$i][0];
+        foreach ($filegambar['gallerygambar'] as $i => $value) {
+            # code...
+            if ($value->isValid() && !$value->hasMoved()) {
+                $newname[$i] = $value->getRandomName();
+                $value->move('img/gallery/', $newname[$i]);
+                $this->gallery->save([
+                    'gallerygambar' => $newname[$i],
+                    'idordergallery' => $idorder,
+                ]);
+            }
+        }
+
         // dd($newname);
+        // $this->ordergallery->save([
+        //     'newsevents_id' => $this->request->getVar('newsevents_id'),
+        // ]);
+        // // mengambil id dari order
+        // $idorder = $this->ordergallery->getInsertID();
 
         // $this->gallery->save([
-        //     'gallerygambar' => $newName,
+        //     'gallerygambar' => $newname,
         //     'idordergallery' => $idorder,
         // ]);
 
