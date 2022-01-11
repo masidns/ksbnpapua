@@ -20,7 +20,8 @@ class Filters extends BaseConfig
         'toolbar'  => DebugToolbar::class,
         'honeypot' => Honeypot::class,
         'Authcek' => \App\Filters\Authcek::class,
-    
+        'options' => \App\Filters\Options::class,
+
     ];
 
     /**
@@ -31,6 +32,7 @@ class Filters extends BaseConfig
      */
     public $globals = [
         'before' => [
+            'options'
             // 'honeypot',
             // 'csrf',
         ],

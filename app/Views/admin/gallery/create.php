@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <form action="<?= base_url('/gallery/save') ?>" method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" id="form">
                         <?= csrf_field() ?>
                         <div class="card">
                             <div class="card-header">
@@ -35,15 +35,12 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="validationServer04">Judul</label>
-                                            <select name="newsevents_id"
-                                                class="custom-select <?= ($validation->hasError('newsevents_id')) ? 'is-invalid' : '' ?>"
-                                                id="validationServer04" aria-describedby="validationServer04Feedback">
+                                            <select name="newsevents_id" class="custom-select <?= ($validation->hasError('newsevents_id')) ? 'is-invalid' : '' ?>" id="validationServer04" aria-describedby="validationServer04Feedback">
                                                 <option selected disabled value="">Pilih Judul...</option>
                                                 <?php foreach ($news as $key => $value) : ?>
-                                                <option value="<?= $value->newsevents_id ?>"
-                                                    <?= $value->newsevents_id == old('newsevents_id') ? 'selected' : '' ?>>
-                                                    <?= $value->judul ?>
-                                                </option>
+                                                    <option value="<?= $value->newsevents_id ?>" <?= $value->newsevents_id == old('newsevents_id') ? 'selected' : '' ?>>
+                                                        <?= $value->judul ?>
+                                                    </option>
                                                 <?php endforeach ?>
                                             </select>
                                             <div id="validationServer04Feedback" class="invalid-feedback">
@@ -55,9 +52,7 @@
                                         <div class="form-group">
                                             <label for="">Upload Gambar</label>
                                             <div class="custom-file">
-                                                <input type="file" name="gallerygambar[]" id="gambar"
-                                                    class="custom-file-input <?= ($validation->hasError('gallerygambar')) ? 'is-invalid' : ''; ?>"
-                                                    onchange="previewImg()" multiple="true">
+                                                <input type="file" name="gallerygambar[]" id="image" class="custom-file-input <?= ($validation->hasError('gallerygambar')) ? 'is-invalid' : ''; ?>" onchange="image_select()" multiple>
                                                 <label class="custom-file-label" for="">Pilih
                                                     gambar...</label>
                                                 <div id="validationServer03Feedback" class="invalid-feedback">
@@ -67,10 +62,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="container-image d-flex justify-align-content-center position-relative">
-                                    <img src="" alt="">
+                                <!-- coba -->
+                                <!-- <div class="row">
+                                    <div class="col">
+                                        <input type="file" class="form-control d-none" name="gallery" id="image2"
+                                            multiple>
+                                        <button type="button" class="btn btn-outline-primary"
+                                            onclick="document.getElementsById('image2')">pilih
+                                            gambar</button>
+                                    </div>
+                                </div> -->
+                                <!-- coba -->
+                                <div class="row" id="containerImage">
 
                                 </div>
+                                <!-- <div class="image-container d-flex justify-align-content-center position-relative">
+                                    <img src="/img/news/default.jpg" alt="">
+                                    <span class="position-absolute"> &times;</span>
+                                </div> -->
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success float-right">SIMPAN</button>
@@ -85,4 +94,7 @@
     <!-- /.content -->
 
 </div>
+<script>
+
+</script>
 <?= $this->endsection() ?>
