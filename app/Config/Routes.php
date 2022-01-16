@@ -46,6 +46,8 @@ $routes->get('/newsevent/update/(:any)', 'newsevent::update/$1', ['filter' => 'A
 $routes->post('/newsevent/save', 'newsevent::save', ['filter' => 'Authcek']);
 $routes->post('/newsevent/updating/(:any)', 'newsevent::updating/$1', ['filter' => 'Authcek']);
 $routes->delete('/newsevent/delete/(:num)', 'newsevent::detail/$1', ['filter' => 'Authcek']);
+// gallery
+$routes->get('/gallery', 'gallery::index', ['filter' => 'Authcek']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

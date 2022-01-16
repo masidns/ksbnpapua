@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- new gallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/gallery-grid.css'); ?> ">
+    <!-- new gallery -->
     <link rel="stylesheet" href="<?= base_url('assets/style.css') ?>">
 </head>
 
@@ -78,6 +82,9 @@
     <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- new gallery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <!-- new gallery -->
     <script type="text/javascript">
         // swall allert
         var pesan = "<?= session()->getFlashdata('pesan') ?>";
@@ -220,6 +227,7 @@
         //     return image;
         // }
         // upload multiple file
+        baguetteBox.run('.tz-gallery');
     </script>
     <script src="<?= base_url('assets/style.js') ?>"></script>
 </body>

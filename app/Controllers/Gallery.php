@@ -31,6 +31,7 @@ class Gallery extends BaseController
             'title' => 'KSBN PAPUA - Gallery Event',
             'order' => $this->ordergallery->getorder(),
         ];
+        // dd($data['order']);
         return view('admin/gallery/index', $data);
     }
 
@@ -100,5 +101,17 @@ class Gallery extends BaseController
 
         session()->setFlashdata('pesan', 'Success,Data Berhasil disimpan.');
         return redirect()->to('/gallery');
+    }
+
+    public function detail($idordergallery)
+    {
+        # code...
+        $data = [
+            'title' => 'KSBN PAPUA - Detail Gallery',
+            'order' => $this->ordergallery->getorder($idordergallery),
+            'gallery' => $this->gallery->getGallery(),
+        ];
+        // dd($data['order']);
+        return view('admin/gallery/detail', $data);
     }
 }

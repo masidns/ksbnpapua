@@ -45,13 +45,13 @@
                                         </thead>
                                         <tbody>
                                             <?php foreach ($order as $key => $value) : ?>
-                                            <tr>
-                                                <td><?= $key + 1 ?></td>
-                                                <td><?= $value->judul ?></td>
-                                                <td>
-                                                    <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?= $key + 1 ?></td>
+                                                    <td><?= $value->judul ?></td>
+                                                    <td>
+                                                        <a href="<?= base_url('/gallery/detail/' . $value->idordergallery); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                    </td>
+                                                </tr>
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>
