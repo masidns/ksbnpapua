@@ -102,15 +102,15 @@ class Gallery extends BaseController
         return redirect()->to('/gallery');
     }
 
-    public function detail($idordergallery)
+    public function detail($sluggallery)
     {
         # code...
         $data = [
             'title' => 'KSBN PAPUA - Detail Gallery',
-            'order' => $this->ordergallery->getorder($idordergallery),
+            'order' => $this->ordergallery->getorder($sluggallery),
             'gallery' => $this->gallery->getGallery(),
         ];
-        // dd($data['order']);
+        // dd($data);
         return view('admin/gallery/detail', $data);
     }
 }
