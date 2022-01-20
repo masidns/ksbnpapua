@@ -26,35 +26,37 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><?= $order->judul; ?></h3>
+                            <h3 class="card-title"><?= $order->judulgallery; ?></h3>
                         </div>
                         <div class="card-body">
                             <div class="tz-gallery">
                                 <div class="row">
                                     <?php foreach ($gallery as $key => $value) : ?>
-                                        <?php if ($order->idordergallery == $value->idordergallery) : ?>
+                                    <?php if ($order->idordergallery == $value->idordergallery) : ?>
 
-                                            <div class="col-sm-6 col-md-4">
-                                                <a class="lightbox" href="<?= base_url('img/gallery/' . $value->gallerygambar); ?>">
-                                                    <img src="<?= base_url('img/gallery/' . $value->gallerygambar); ?>" alt="Park">
-                                                </a>
-                                            </div>
+                                    <div class="col-sm-6 col-md-4">
+                                        <a class="lightbox"
+                                            href="<?= base_url('img/gallery/' . $value->gallerygambar); ?>">
+                                            <img src="<?= base_url('img/gallery/' . $value->gallerygambar); ?>"
+                                                alt="Park">
+                                        </a>
+                                    </div>
 
-                                        <?php endif ?>
+                                    <?php endif ?>
                                     <?php endforeach ?>
                                 </div>
                             </div>
                             <div class="row">
                                 <?php foreach ($gallery as $key => $value) : ?>
-                                    <?php if ($order->idordergallery == $value->idordergallery) : ?>
+                                <?php if ($order->idordergallery == $value->idordergallery) : ?>
 
-                                        <div class="col-sm-6 col-md-4">
-                                            <a class="lightbox" href="<?= base_url('img/gallery/' . $value->gallerygambar); ?>">
-                                                <img src="<?= base_url('img/gallery/' . $value->gallerygambar); ?>" alt="Park">
-                                            </a>
-                                        </div>
+                                <div class="col-sm-6 col-md-4">
+                                    <a class="lightbox" href="<?= base_url('img/gallery/' . $value->gallerygambar); ?>">
+                                        <img src="<?= base_url('img/gallery/' . $value->gallerygambar); ?>" alt="Park">
+                                    </a>
+                                </div>
 
-                                    <?php endif ?>
+                                <?php endif ?>
                                 <?php endforeach ?>
                             </div>
                         </div>
