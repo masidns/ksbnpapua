@@ -15,7 +15,10 @@ class OrdergalleryModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'newsevents_id'
+        'users_id',
+        'judulgallery',
+        'gstatus',
+        'sluggallery',
     ];
 
     // Dates
@@ -48,12 +51,12 @@ class OrdergalleryModel extends Model
         if ($idordergallery == false) {
             return $this->db->table('ordergallery')
                 ->orderBy('idordergallery', 'DESC')
-                ->join('newsevents', 'newsevents.newsevents_id = ordergallery.newsevents_id')
+                ->join('users', 'users.users_id = ordergallery.users_id')
                 // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
                 ->get()->getResult();
         }
         return $this->db->table('ordergallery')
-            ->join('newsevents', 'newsevents.newsevents_id = ordergallery.newsevents_id')
+            ->join('users', 'users.users_id = ordergallery.users_id')
             // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
             ->getWhere(['idordergallery' => $idordergallery])->getRowObject();
     }

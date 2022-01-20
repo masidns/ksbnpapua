@@ -31,8 +31,8 @@ function image_select() {
 
 $("form#form").submit(function(e) {
     e.preventDefault();  
-    var item = document.getElementById('validationServer04').value;
-    formData.append('newsevents_id', document.getElementById('validationServer04').value);
+    var item = document.getElementById('formGroupExampleInput').value;
+    formData.append('users_id', document.getElementById('formGroupExampleInput').value);
     $.ajax({
         url: "http://" + window.location.host + "/gallery/save",
         type: 'POST',

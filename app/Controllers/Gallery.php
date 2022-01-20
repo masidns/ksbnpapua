@@ -81,9 +81,12 @@ class Gallery extends BaseController
         // }
 
         $filegambar = $this->request->getFiles();
-
+        // $slug = url_title($this->request->getVar('judulgallery'), '-', true);
         $this->ordergallery->save([
-            'newsevents_id' => $this->request->getVar('newsevents_id'),
+            'users_id' => session()->get('users_id'),
+            'judulgallery' => $this->request->getVar('judulgallery'),
+            'sluggallery' => url_title($this->request->getVar('judulgallery'), '-', true),
+            'gstatus' => 1
         ]);
         // mengambil id dari order
         $idorder = $this->ordergallery->getInsertID();

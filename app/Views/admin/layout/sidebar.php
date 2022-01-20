@@ -48,7 +48,7 @@
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link <?= (session()->get('active') == 'Gallery') ? 'active' : ((session()->get('active') == 'video') ? 'active' : ''); ?>">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Gallery

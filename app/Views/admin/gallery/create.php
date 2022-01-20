@@ -32,22 +32,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <label for="validationServer04">Judul</label>
-                                            <select name="newsevents_id" class="custom-select <?= ($validation->hasError('newsevents_id')) ? 'is-invalid' : '' ?>" id="validationServer04" aria-describedby="validationServer04Feedback">
-                                                <option selected disabled value="">Pilih Judul...</option>
-                                                <?php foreach ($news as $key => $value) : ?>
-                                                    <option value="<?= $value->newsevents_id ?>" <?= $value->newsevents_id == old('newsevents_id') ? 'selected' : '' ?>>
-                                                        <?= $value->judul ?>
-                                                    </option>
-                                                <?php endforeach ?>
-                                            </select>
-                                            <div id="validationServer04Feedback" class="invalid-feedback">
-                                                <?= $validation->getError('newsevents_id') ?>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="">Upload Gambar</label>
@@ -61,6 +46,43 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="validationServer04">Judul</label>
+                                            <input type="text" name="judulgallery" class="form-control <?= ($validation->hasError('judulgallery')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Judul" value="<?= (old('judulgallery')); ?>" autofocus>
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('judulgallery'); ?>
+                                            </div>
+                                            <!-- <select name="newsevents_id" class="custom-select <?= ($validation->hasError('newsevents_id')) ? 'is-invalid' : '' ?>" id="validationServer04" aria-describedby="validationServer04Feedback">
+                                                <option selected disabled value="">Pilih Judul...</option>
+                                                <?php foreach ($news as $key => $value) : ?>
+                                                    <option value="<?= $value->newsevents_id ?>" <?= $value->newsevents_id == old('newsevents_id') ? 'selected' : '' ?>>
+                                                        <?= $value->judul ?>
+                                                    </option>
+                                                <?php endforeach ?>
+                                            </select>
+                                            <div id="validationServer04Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('newsevents_id') ?>
+                                            </div> -->
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm-11">
+                                                <!-- <br><br><br> -->
+                                                <label>Sampul</label>
+                                                <img src="<?= base_url('/img/news/default.jpg'); ?> " class="img-thumbnail img-preview">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <div class="col-sm-11">
+                                                <input type="file" name="gambar" id="gambar" class="custom-file-input <?= ($validation->hasError('gambar')) ? 'is-invalid' : ''; ?>" onchange="previewImg2()">
+                                                <label class="custom-file-label" for="gambar"></label>
+                                                <div id="validationServer03Feedback" class="invalid-feedback">
+                                                    <?= $validation->getError('gambar'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <!-- coba -->
                                 <!-- <div class="row">
