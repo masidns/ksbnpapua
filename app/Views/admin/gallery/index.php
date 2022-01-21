@@ -44,15 +44,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php $key = 1 ?>
                                             <?php foreach ($order as $key => $value) : ?>
-                                            <tr>
-                                                <td><?= $key + 1 ?></td>
-                                                <td><?= $value->judulgallery ?></td>
-                                                <td>
-                                                    <a href="<?= base_url('/gallery/detail/' . $value->sluggallery); ?>"
-                                                        class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                                </td>
-                                            </tr>
+                                                <?php if ($value->gstatus == 1) : ?>
+                                                    <tr>
+                                                        <td><?= $key++ ?></td>
+                                                        <td><?= $value->judulgallery ?></td>
+                                                        <td>
+                                                            <a href="<?= base_url('/gallery/detail/' . $value->sluggallery); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endif ?>
                                             <?php endforeach ?>
                                         </tbody>
                                     </table>

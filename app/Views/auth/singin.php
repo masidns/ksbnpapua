@@ -2,7 +2,7 @@
 <?= $this->section('content'); ?>
 <div class="login-box">
     <div class="login-logo">
-        <a href="<?= base_url('assets'); ?>/index2.html"><b>KSBN</b>PAPUA</a>
+        <a href="<?= base_url('/ksbn'); ?>/"><b>KSBN</b>PAPUA</a>
     </div>
     <!-- /.login-logo -->
     <div class="card">

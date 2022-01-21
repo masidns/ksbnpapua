@@ -15,6 +15,7 @@ class Videogallery extends BaseController
         //Do your magic here
         $this->video = new VideogalleryModel();
         $this->order = new OrdergalleryModel();
+        session()->set(['active' => 'video']);
     }
 
 
@@ -36,6 +37,13 @@ class Videogallery extends BaseController
         # code...
         if (!$this->validate([
             'judulgallery' => [
+                'label'    => 'Field 1 Custom Name',
+                'rules'    => 'required',
+                'errors'    => [
+                    'required'    => '{field} is required.'
+                ]
+            ],
+            'video' => [
                 'label'    => 'Field 1 Custom Name',
                 'rules'    => 'required',
                 'errors'    => [

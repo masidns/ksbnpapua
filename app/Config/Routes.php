@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('ksbn');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -31,7 +31,7 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', 'ksbn::index');
 $routes->get('/auth', 'auth::index');
 // profil
 $routes->get('/profil', 'profil::index', ['filter' => 'Authcek']);
@@ -48,6 +48,8 @@ $routes->post('/newsevent/updating/(:any)', 'newsevent::updating/$1', ['filter' 
 $routes->delete('/newsevent/delete/(:num)', 'newsevent::detail/$1', ['filter' => 'Authcek']);
 // gallery
 $routes->get('/gallery', 'gallery::index', ['filter' => 'Authcek']);
+$routes->get('/gallery/create', 'gallery::create', ['filter' => 'Authcek']);
+$routes->get('/videogallery', 'videogallery::index', ['filter' => 'Authcek']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

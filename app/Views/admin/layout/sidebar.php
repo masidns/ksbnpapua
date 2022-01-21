@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?= base_url(); ?>" class="brand-link">
+    <a href="<?= base_url('/ksbn'); ?>" class="brand-link">
         <img src="<?= base_url('img'); ?>/LOGO_KSBN.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">KSBN PAPUA</span>
     </a>
@@ -39,16 +39,8 @@
                         </p>
                     </a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="<?= base_url('/gallery'); ?>" class="nav-link <?= session()->get('active') == 'Gallery' ? 'active' : ''; ?>">
-                        <i class="nav-icon far fa-image"></i>
-                        <p>
-                            Gallery
-                        </p>
-                    </a>
-                </li> -->
                 <li class="nav-item">
-                    <a href="#" class="nav-link <?= (session()->get('active') == 'Gallery') ? 'active' : ((session()->get('active') == 'video') ? 'active' : ''); ?>">
+                    <a href="" class="nav-link <?= (session()->get('active') == 'Gallery') ? 'active' : ((session()->get('active') == 'video') ? 'active' : ''); ?>">
                         <i class="nav-icon far fa-image"></i>
                         <p>
                             Gallery
@@ -63,7 +55,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('/videogallery'); ?>" class="nav-link">
+                            <a href="<?= base_url('/videogallery'); ?>" class="nav-link <?= session()->get('active') == 'video' ? 'active' : ''; ?>"" class=" nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Video</p>
                             </a>

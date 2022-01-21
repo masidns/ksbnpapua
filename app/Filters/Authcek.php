@@ -28,7 +28,7 @@ class Authcek implements FilterInterface
         //
         if (!session()->get('login')) {
             session()->setFlashdata('pesan', 'Error,Silahkan melakukan login dulu');
-            return redirect()->back();
+            return redirect()->to('/auth');
         }
     }
 
