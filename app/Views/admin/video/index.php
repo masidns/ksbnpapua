@@ -50,8 +50,11 @@
                                                     <tr>
                                                         <td><?= $key++ ?></td>
                                                         <td><?= $value->judulgallery ?></td>
-                                                        <td>
-                                                            <a href="<?= base_url('/gallery/detail/' . $value->sluggallery); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                        <td align="center">
+                                                            <button type="button" class="btn btn-primary fa fa-eye" data-toggle="modal" data-target="#modal-lg-<?= $value->idordergallery; ?>">
+                                                            </button>
+                                                            <button type="button" class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#modal-default-edit-<?= $value->idordergallery; ?>">
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>
@@ -72,8 +75,6 @@
     <!-- /.content -->
 
     <!-- modal -->
-
-
     <div class="modal fade" id="modal-container-494244" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -85,8 +86,8 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form action="<?= base_url('/videogallery/save'); ?>">
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="validationServer04">Judul</label>
                             <input type="text" name="judulgallery" class="form-control <?= ($validation->hasError('judulgallery')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Judul" value="<?= (old('judulgallery')); ?>" autofocus>
@@ -101,23 +102,102 @@
                                 <?= $validation->getError('video'); ?>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
+                    </div>
+                    <div class="modal-footer">
 
-                    <button type="button" class="btn btn-primary">
-                        Save changes
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-                </div>
+                        <button type="submit" class="btn btn-primary">
+                            Save changes
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </form>
             </div>
 
         </div>
 
     </div>
     <!-- modal -->
+
+    <!-- modal views -->
+    <?php foreach ($order as $key => $value) : ?>
+        <div class="modal fade" id="modal-lg-<?= $value->idordergallery; ?>">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><?= $value->judulgallery; ?></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php foreach ($video as $key => $vvalue) : ?>
+                            <?php if ($value->idordergallery == $vvalue->idordergallery) : ?>
+                                <iframe width="765" height="480" src="<?= $vvalue->video; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <?php endif ?>
+                        <?php endforeach ?>
+                    </div>
+                    <!-- <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    <?php endforeach ?>
+
+    <?php foreach ($order as $key => $value) : ?>
+        <div class="modal fade" id="modal-default-edit-<?= $value->idordergallery; ?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Perbaharui data</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="<?= base_url('/videogallery/update/' . $value->idordergallery); ?>" method="post">
+                        <?= csrf_field(); ?>
+                        <input type="hidden" name="sluggallery" value="<?= $value->sluggallery; ?>">
+                        <div class="modal-body">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="validationServer04">Judul</label>
+                                    <input type="text" name="judulgallery" class="form-control <?= ($validation->hasError('judulgallery')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Judul" value="<?= (old('judulgallery')) ? old('judulgallery') : $value->judulgallery; ?>" autofocus>
+                                    <div id="validationServer03Feedback" class="invalid-feedback">
+                                        <?= $validation->getError('judulgallery'); ?>
+                                    </div>
+                                </div>
+                                <?php foreach ($video as $key => $vvalue) : ?>
+                                    <?php if ($value->idordergallery == $vvalue->idordergallery) : ?>
+                                        <input type="hidden" name="videolama" value="<?= $vvalue->video; ?>">
+                                        <div class="form-group">
+                                            <label for="validationServer04">Video link Youtube</label>
+                                            <input type="text" name="video" class="form-control <?= ($validation->hasError('video')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Masukan Link Youtube" value="<?= (old('video')) ? old('video') : $vvalue->video; ?>" autofocus>
+                                            <div id="validationServer03Feedback" class="invalid-feedback">
+                                                <?= $validation->getError('video'); ?>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    <?php endforeach ?>
+    <!-- /.modal -->
+    <!-- modal -->
+
 
 </div>
 <?= $this->endsection() ?>

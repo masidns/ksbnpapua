@@ -48,6 +48,8 @@ class VideogalleryModel extends Model
         # code...
         if ($id == false) {
             return $this->db->table('videogallery')
+                // ->select('ordergallery.*,videogallery.video')
+                ->orderBy('id', 'DESC')
                 ->join('ordergallery', 'ordergallery.idordergallery = videogallery.idordergallery')
                 ->get()->getResult();
         }
