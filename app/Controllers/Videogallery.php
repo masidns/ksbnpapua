@@ -97,9 +97,11 @@ class Videogallery extends BaseController
         if ($videolama->video == $this->request->getVar('video')) {
             $namavideo = $this->request->getVar('videolama');
         } else {
-            $videobaru = $this->request->getVar('video');
-            $datav = explode('watch?v=', $videobaru);
-            $namavideo = 'https://www.youtube.com/embed/' . $datav[1];
+            $namavideo = $this->request->getVar('videolama');
+            if ($namavideo != $this->request->getVar('video')) {
+                $datav = explode('watch?v=', $this->request->getVar('video'));
+                $namavideo = 'https://www.youtube.com/embed/' . $datav[1];
+            }
         }
 
         if (!$this->validate([

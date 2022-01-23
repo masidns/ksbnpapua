@@ -55,6 +55,7 @@
                                                             </button>
                                                             <button type="button" class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#modal-default-edit-<?= $value->idordergallery; ?>">
                                                             </button>
+                                                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>
