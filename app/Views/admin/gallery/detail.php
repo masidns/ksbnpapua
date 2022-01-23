@@ -130,7 +130,7 @@
 <!-- /.modal tambah-->
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
-        <form action="<?= base_url('/gallery/insertfoto') ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('/gallery/insertfoto/' . $value->idordergallery) ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <div class="modal-content">
                 <div class="modal-header">
@@ -146,7 +146,7 @@
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <!-- <label for="exampleFormControlFile1">Example file input</label> -->
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple>
+                                        <input type="file" name="gallerygambar[]" class="form-control-file" id="exampleFormControlFile1" multiple>
                                     </div>
                                 </div>
                             </div>

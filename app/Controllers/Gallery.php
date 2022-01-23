@@ -111,7 +111,7 @@ class Gallery extends BaseController
             'gallery' => $this->gallery->getGallery(),
             'validation' => \Config\Services::validation(),
         ];
-        // dd($data);
+        // dd($data['gallery']);
         return view('admin/gallery/detail', $data);
     }
 
@@ -157,13 +157,15 @@ class Gallery extends BaseController
         return redirect()->back();
     }
 
-    public function insertfoto()
+    public function insertfoto($idordergallery)
     {
         # code...
+        // dd($idordergallery);
+        // $detail = $this->ordergallery->where('idordergallery', $idordergallery)->get()->getRowObject();
+        // dd($detail->idordergallery);
         if (!$this->validate([
             'gallerygambar' => [
                 'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
-                // 'rules' => 'is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'required' => 'Tidak Boleh Kosong',
                     'uploaded' => 'Minimal upload 1 gambar',
@@ -173,25 +175,26 @@ class Gallery extends BaseController
                 ]
             ],
         ])) {
-            session()->setFlashdata('pesan', 'Error,Data gagal diperbaharui!');
+            session()->setFlashdata('pesan', 'Error,Data gagal ditambah!');
             return redirect()->back();
         }
 
         // cekgambar
-        $filegambar = $this->request->getFile('gallerygambar');
-        if ($filegambar->getError() != 4) {
-            $namafile = $filegambar->getRandomName();
-            $filegambar->move('img/gallery/', $namafile);
-            unlink('img/gallery/' . $this->request->getVar('gambarlama'));
+        $filegambar = $this->request->getFiles();
+        foreach ($filegambar['gallerygambar'] as $i => $value) {
+            # code...
+            if ($value->isValid() && !$value->hasMoved()) {
+                $newname[$i] = $value->getRandomName();
+                $value->move('img/gallery/', $newname[$i]);
+                $this->gallery->save([
+                    'gallerygambar' => $newname[$i],
+                    'idordergallery' => $idordergallery,
+                ]);
+            }
         }
         // cekgambar
 
-        $this->gallery->save([
-            // 'id' => $id,
-            'gallerygambar' => $namafile,
-        ]);
-
-        session()->setFlashdata('pesan', 'Success,Data berhasil perbaharui!');
+        session()->setFlashdata('pesan', 'Success,Data berhasil ditambah!');
         return redirect()->back();
     }
 
