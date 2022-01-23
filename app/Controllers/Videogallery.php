@@ -93,13 +93,15 @@ class Videogallery extends BaseController
         }
 
         $videolama = $this->video->getVideo($this->request->getVar('video'));
-        if ($videolama->video = $this->request->getVar('video')) {
+        // dd($videolama);
+        if ($videolama->video == $this->request->getVar('video')) {
             $namavideo = $this->request->getVar('videolama');
         } else {
             $videobaru = $this->request->getVar('video');
             $datav = explode('watch?v=', $videobaru);
             $namavideo = 'https://www.youtube.com/embed/' . $datav[1];
         }
+
         if (!$this->validate([
             'judulgallery' => [
                 'rules'    => $rulesjudul,
@@ -128,6 +130,21 @@ class Videogallery extends BaseController
             'gstatus' => 2,
         ]);
 
+        // $idorder = $this->order->getInsertID();
+
+        // explode video
+        // $videolama = $this->video->getVideo($this->request->getVar('video'));
+        // // dd($videolama);
+        // if ($videolama->video == $this->request->getVar('video')) {
+        //     $namavideo = $this->request->getVar('videolama');
+        // } else {
+        //     $videobaru = $this->request->getVar('video');
+        //     $datav = explode('watch?v=', $videobaru);
+        //     $namavideo = 'https://www.youtube.com/embed/' . $datav[1];
+        // }
+        // dd($namavideo);
+
+        // if ($idordergallery == $idorder) {
         $data = [
             'video' => $namavideo,
             // 'id' => $idordergallery

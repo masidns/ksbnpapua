@@ -102,6 +102,7 @@
         <?php endforeach ?>
     </div>
 </section>
+<!-- berita terbaru -->
 
 <!-- video terbaru -->
 <!-- Start exibition Area -->
@@ -117,138 +118,23 @@
         </div>
         <div class="row">
             <div class="active-exibition-carusel">
-                <div class="single-exibition item">
-                    <img src="<?= base_url('assetsweb'); ?>/img/e1.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-
-                <div class="single-exibition item">
-                    <img src="<?= base_url('assetsweb'); ?>/img/e2.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-
-                <div class="single-exibition item">
-                    <img src="<?= base_url('assetsweb'); ?>/img/e3.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-                <div class="single-exibition item">
-                    <img src="<?= base_url('assetsweb'); ?>/img/e1.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-
-                <div class="single-exibition item">
-                    <img src="<?= base_url('assetsweb'); ?>/img/e2.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-
-                <div class="single-exibition item">
-                    <img src="<?= base_url('assetsweb'); ?>/img/e3.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-                <div class="single-exibition item">
-                    <img src="<?= base_url('assetsweb'); ?>/img/e1.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-
-                <div class="single-exibition item">
-                    <img class="img-fluid" src="<?= base_url('assetsweb'); ?>/img/e2.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
-
-                <div class="single-exibition item">
-                    <img class="img-fluid" src="<?= base_url('assetsweb'); ?>/img/e3.jpg" alt="">
-                    <ul class="tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest blog for women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
-                    </p>
-                    <h6 class="date">31st January, 2018</h6>
-                </div>
+                <?php foreach ($video as $key => $value) : ?>
+                    <div class="single-exibition item">
+                        <!-- <img src="<?= base_url('assetsweb'); ?>/img/e1.jpg" alt=""> -->
+                        <iframe width="350" height="300" src="<?= $value->video; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <ul class="tags">
+                            <!-- <li><a href="#">Travel</a></li>
+                            <li><a href="#">Life style</a></li> -->
+                        </ul>
+                        <a href="#">
+                            <h4><?= $value->judulgallery; ?></h4>
+                        </a>
+                        <!-- <p>
+                            Lorem ipsum dolor sit amet, consec teturadip isicing elit, sed do eiusmod tempor.
+                        </p> -->
+                        <h6 class="date">31st January, 2018</h6>
+                    </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>
