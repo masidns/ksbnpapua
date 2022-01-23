@@ -273,19 +273,5 @@ class Gallery extends BaseController
             session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
         }
         return redirect()->to('/gallery');
-
-        // dd($data);
-
-        // dd($data['order']);
-        // dd($this->gallery->getGallery());
-        // if ($data == $idordergallery) {
-        //     $this->gallery->delete($idordergallery);
-        //     $this->ordergallery->delete($idordergallery);
-        // } else {
-        //     session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
-        // }
-        // // dd($data);
-        // session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
-        // return redirect()->to('/gallery');
     }
 }

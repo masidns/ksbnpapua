@@ -49,15 +49,37 @@ class OrdergalleryModel extends Model
     {
         # code...
         if ($sluggallery == false) {
-            return $this->db->table('ordergallery')
-                ->orderBy('idordergallery', 'DESC')
-                ->join('users', 'users.users_id = ordergallery.users_id')
+            return $this->db->query(
+                "SELECT
+            `ordergallery`.*,
+            `gallery`.`gallerygambar`,
+            `users`.`users_id` AS `users_id1`
+          FROM
+            `ordergallery`
+            LEFT JOIN `users` ON `users`.`users_id` = `ordergallery`.`users_id`
+            LEFT JOIN `gallery` ON `gallery`.`idordergallery` =
+          `ordergallery`.`idordergallery`"
+            )
+                // ->orderBy('idordergallery', 'DESC')
+                // ->join('users', 'users.users_id = ordergallery.users_id')
                 // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
-                ->get()->getResult();
+                ->getResult();
         }
         return $this->db->table('ordergallery')
             ->join('users', 'users.users_id = ordergallery.users_id')
             // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
             ->getWhere(['sluggallery' => $sluggallery])->getRowObject();
+
+        // if ($sluggallery == false) {
+        //     return $this->db->table('ordergallery')
+        //         ->orderBy('idordergallery', 'DESC')
+        //         ->join('users', 'users.users_id = ordergallery.users_id')
+        //         // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
+        //         ->get()->getResult();
+        // }
+        // return $this->db->table('ordergallery')
+        //     ->join('users', 'users.users_id = ordergallery.users_id')
+        //     // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
+        //     ->getWhere(['sluggallery' => $sluggallery])->getRowObject();
     }
 }

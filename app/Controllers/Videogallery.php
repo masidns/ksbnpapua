@@ -147,9 +147,7 @@ class Videogallery extends BaseController
     public function delete($idordergallery)
     {
         # code...
-        $this->video->where(['idordergallery' => $idordergallery])->delete();
         $this->order->where(['idordergallery' => $idordergallery])->delete();
-
         session()->setFlashdata('pesan', 'Success,Data berhasil dihapus!');
         return redirect()->to('/videogallery');
     }

@@ -50,7 +50,6 @@
             <div class="menu-content pb-60 col-lg-10">
                 <div class="title text-center">
                     <h1 class="mb-10">Berita terbaru</h1>
-                    <p>Who are in extremely love with eco friendly system.</p>
                 </div>
             </div>
         </div>
@@ -149,30 +148,32 @@
             <div class="menu-content pb-70 col-lg-8">
                 <div class="title text-center">
                     <h1 class="mb-10">Gallery Foto</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua.</p>
+                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 single-blog">
-                <div class="thumb">
-                    <img class="img-fluid" src="<?= base_url('assetsweb'); ?>/img/b1.jpg" alt="">
-                </div>
-                <p class="date">10 Jan 2018</p>
-                <a href="#">
-                    <h4>Addiction When Gambling
-                        Becomes A Problem</h4>
-                </a>
-                <p>
-                    inappropriate behavior ipsum dolor sit amet, consectetur.
-                </p>
-                <div class="meta-bottom d-flex justify-content-between">
-                    <p><span class="lnr lnr-heart"></span> 15 Likes</p>
-                    <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 single-blog">
+            <?php foreach ($order as $key => $value) : ?>
+                <?php if ($value->gstatus == 1) : ?>
+                    <div class="col-lg-3 col-md-6 single-blog">
+                        <div class="thumb">
+                            <img class="img-fluid" src="<?= base_url('img/gallery/' . $order[0 + 1]->gallerygambar); ?>" alt="">
+                        </div>
+                        <p class="date">10 Jan 2018</p>
+                        <a href="#">
+                            <h4><?= $value->judulgallery; ?></h4>
+                        </a>
+                        <p>
+                            inappropriate behavior ipsum dolor sit amet, consectetur.
+                        </p>
+                        <div class="meta-bottom d-flex justify-content-between">
+                            <p><span class="lnr lnr-heart"></span> 15 Likes</p>
+                            <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
+                        </div>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
+            <!-- <div class="col-lg-3 col-md-6 single-blog">
                 <div class="thumb">
                     <img class="img-fluid" src="<?= base_url('assetsweb'); ?>/img/b2.jpg" alt="">
                 </div>
@@ -222,7 +223,7 @@
                     <p><span class="lnr lnr-heart"></span> 15 Likes</p>
                     <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
