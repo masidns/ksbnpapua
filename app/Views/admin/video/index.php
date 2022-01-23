@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="<?= base_url('/gallery'); ?>">Gallery Video KSBN</a></li>
+                        <li class="breadcrumb-item"><a href="<?= base_url('/videogallery'); ?>">Gallery Video KSBN</a></li>
                         <!-- <li class="breadcrumb-item active">Fixed Layout</li> -->
                     </ol>
                 </div>
@@ -55,7 +55,7 @@
                                                             </button>
                                                             <button type="button" class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#modal-default-edit-<?= $value->idordergallery; ?>">
                                                             </button>
-                                                            <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                            <a href="<?= base_url('/videogallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>

@@ -132,21 +132,6 @@ class Videogallery extends BaseController
             'gstatus' => 2,
         ]);
 
-        // $idorder = $this->order->getInsertID();
-
-        // explode video
-        // $videolama = $this->video->getVideo($this->request->getVar('video'));
-        // // dd($videolama);
-        // if ($videolama->video == $this->request->getVar('video')) {
-        //     $namavideo = $this->request->getVar('videolama');
-        // } else {
-        //     $videobaru = $this->request->getVar('video');
-        //     $datav = explode('watch?v=', $videobaru);
-        //     $namavideo = 'https://www.youtube.com/embed/' . $datav[1];
-        // }
-        // dd($namavideo);
-
-        // if ($idordergallery == $idorder) {
         $data = [
             'video' => $namavideo,
             // 'id' => $idordergallery
@@ -156,6 +141,16 @@ class Videogallery extends BaseController
         $this->video->update($detail->id, $data);
         // }
         session()->setFlashdata('pesan', 'Success,Data berhasil disimpan!');
+        return redirect()->to('/videogallery');
+    }
+
+    public function delete($idordergallery)
+    {
+        # code...
+        $this->video->where(['idordergallery' => $idordergallery])->delete();
+        $this->order->where(['idordergallery' => $idordergallery])->delete();
+
+        session()->setFlashdata('pesan', 'Success,Data berhasil dihapus!');
         return redirect()->to('/videogallery');
     }
 }

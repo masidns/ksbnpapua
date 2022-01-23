@@ -49,6 +49,7 @@ $routes->delete('/newsevent/delete/(:num)', 'newsevent::detail/$1', ['filter' =>
 // gallery
 $routes->get('/gallery', 'gallery::index', ['filter' => 'Authcek']);
 $routes->get('/gallery/create', 'gallery::create', ['filter' => 'Authcek']);
+$routes->post('/gallery/updatefoto/$id', 'gallery::updatefoto/$1', ['filter' => 'Authcek']);
 $routes->get('/videogallery', 'videogallery::index', ['filter' => 'Authcek']);
 /*
  * --------------------------------------------------------------------
