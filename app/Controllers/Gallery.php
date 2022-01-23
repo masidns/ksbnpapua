@@ -27,6 +27,7 @@ class Gallery extends BaseController
         $data = [
             'title' => 'KSBN PAPUA - Gallery Event',
             'order' => $this->ordergallery->getorder(),
+            'validation' => \Config\Services::validation(),
         ];
         // dd($data['order']);
         return view('admin/gallery/index', $data);
@@ -55,9 +56,10 @@ class Gallery extends BaseController
 
         if (!$this->validate([
             'judulgallery' => [
-                'rules'    => 'required',
+                'rules'    => 'required|is_unique[ordergallery.judulgallery]',
                 'errors'    => [
-                    'required'    => 'Judul tidak boleh kosong.'
+                    'required'    => 'Judul tidak boleh kosong.',
+                    'is_unique'    => 'Judul tidak boleh sama',
                 ]
             ],
             'gallerygambar' => [
@@ -214,5 +216,76 @@ class Gallery extends BaseController
             session()->setFlashdata('pesan', 'Error,Data berhasil dihapus');
         }
         return redirect()->back();
+    }
+
+    public function gantijudul($idordergallery)
+    {
+        $judullama = $this->ordergallery->getorder($this->request->getVar('sluggallery'));
+        if ($judullama->judulgallery == $this->request->getVar('judulgallery')) {
+            $rules = 'required';
+        } else {
+            $rules = 'required|is_unique[ordergallery.judulgallery]';
+        }
+
+        if (!$this->validate([
+            'judulgallery' => [
+                'rules'    => $rules,
+                'errors'    => [
+                    'required'    => 'Judul tidak boleh kosong.',
+                    'is_unique'    => 'Judul tidak boleh sama',
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('pesan', 'Error,Judul gagal diperbaharui');
+            return redirect()->back();
+        }
+
+        $slug = url_title($this->request->getVar('judulgallery'), '-', true);
+        $this->ordergallery->save([
+            'idordergallery' => $idordergallery,
+            'judulgallery' => $this->request->getVar('judulgallery'),
+            'slug' => $slug,
+        ]);
+        session()->setFlashdata('pesan', 'Success,Judul berhasil diperbaharui');
+        return redirect()->to('/gallery');
+    }
+
+    public function delete($idordergallery)
+    {
+        # code...
+        // $data = $this->gallery->where(['idordergallery' => $idordergallery]);
+        $gallery = [];
+        array_push($gallery, $this->gallery->getGallery());
+        foreach ($gallery as $key => $value) {
+            foreach ($value as $key => $item) {
+                # code...
+                // echo $item->idordergallery . ' ' . $item->gallerygambar . '<br>';
+                if ($item->idordergallery == $idordergallery) {
+                    unlink('img/gallery/' . $item->gallerygambar);
+                }
+            }
+        }
+
+        $data = $this->ordergallery->delete($idordergallery);
+        if ($data) {
+            session()->setFlashdata('pesan', 'Success,Data gagal dihapus');
+        } else {
+            session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
+        }
+        return redirect()->to('/gallery');
+
+        // dd($data);
+
+        // dd($data['order']);
+        // dd($this->gallery->getGallery());
+        // if ($data == $idordergallery) {
+        //     $this->gallery->delete($idordergallery);
+        //     $this->ordergallery->delete($idordergallery);
+        // } else {
+        //     session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
+        // }
+        // // dd($data);
+        // session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
+        // return redirect()->to('/gallery');
     }
 }

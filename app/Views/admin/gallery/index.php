@@ -50,8 +50,12 @@
                                                     <tr>
                                                         <td><?= $key++ ?></td>
                                                         <td><?= $value->judulgallery ?></td>
-                                                        <td>
+                                                        <td class="text-center">
                                                             <a href="<?= base_url('/gallery/detail/' . $value->sluggallery); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default-<?= $value->idordergallery; ?>">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <a href="<?= base_url('/gallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>
@@ -70,6 +74,44 @@
 
     </section>
     <!-- /.content -->
-
 </div>
+
+<?php foreach ($order as $key => $value) : ?>
+    <div class="modal fade" id="modal-default-<?= $value->idordergallery; ?>">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="<?= base_url('/gallery/gantijudul/' . $value->idordergallery); ?>" method="post">
+                    <?= csrf_field(); ?>
+                    <input type="hidden" name="sluggallery" value="<?= $value->sluggallery; ?>" id="">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Ganti Judul</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <diiv class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="validationServer04">Judul</label>
+                                    <input type="text" name="judulgallery" class="form-control <?= ($validation->hasError('judulgallery')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Judul" value="<?= (old('judulgallery')) ? old('judulgallery') : $value->judulgallery; ?>">
+                                    <div id="validationServer03Feedback" class="invalid-feedback">
+                                        <?= $validation->getError('judulgallery'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </diiv>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+<?php endforeach ?>
+<!-- /.modal -->
 <?= $this->endsection() ?>
