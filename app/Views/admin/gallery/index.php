@@ -39,16 +39,20 @@
                                         <thead class="text-center">
                                             <tr>
                                                 <th>No.</th>
+                                                <th>sampul</th>
                                                 <th>Judul</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $key = 1 ?>
+                                            <?php $i = 0 ?>
                                             <?php foreach ($order as $key => $value) : ?>
                                                 <?php if ($value->gstatus == 1) : ?>
                                                     <tr>
-                                                        <td><?= $key++ ?></td>
+                                                        <td><?= $i + 1  ?></td>
+                                                        <td class="text-center">
+                                                            <img src="<?= base_url('img/sampul/' . $value->sampul)   ?>" class="getgambar" alt="">
+                                                        </td>
                                                         <td><?= $value->judulgallery ?></td>
                                                         <td class="text-center">
                                                             <a href="<?= base_url('/gallery/detail/' . $value->sluggallery); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
@@ -80,9 +84,10 @@
     <div class="modal fade" id="modal-default-<?= $value->idordergallery; ?>">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="<?= base_url('/gallery/gantijudul/' . $value->idordergallery); ?>" method="post">
+                <form action="<?= base_url('/gallery/gantijudul/' . $value->idordergallery); ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="sluggallery" value="<?= $value->sluggallery; ?>" id="">
+                    <input type="hidden" name="sampullama" value="<?= $value->sampul; ?>" id="">
                     <div class="modal-header">
                         <h4 class="modal-title">Ganti Judul</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -97,6 +102,22 @@
                                     <input type="text" name="judulgallery" class="form-control <?= ($validation->hasError('judulgallery')) ? 'is-invalid' : ''; ?>" id="formGroupExampleInput" placeholder="Judul" value="<?= (old('judulgallery')) ? old('judulgallery') : $value->judulgallery; ?>">
                                     <div id="validationServer03Feedback" class="invalid-feedback">
                                         <?= $validation->getError('judulgallery'); ?>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12">
+                                        <!-- <br><br><br> -->
+                                        <label>Sampul</label>
+                                        <img src="<?= base_url('/img/sampul/' . $value->sampul); ?> " class="img-thumbnail img-preview">
+                                    </div>
+                                </div>
+                                <div class="form-group row ">
+                                    <div class="col-sm-12">
+                                        <input type="file" name="sampul" id="gambar" class="custom-file-input <?= ($validation->hasError('sampul')) ? 'is-invalid' : ''; ?>" onchange="previewImg()" value="<?= old('sampul'); ?>">
+                                        <label class="custom-file-label" for="sampul"><?= $value->sampul; ?></label>
+                                        <div id="validationServer03Feedback" class="invalid-feedback">
+                                            <?= $validation->getError('sampul'); ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

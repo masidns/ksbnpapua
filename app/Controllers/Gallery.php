@@ -62,6 +62,16 @@ class Gallery extends BaseController
                     'is_unique'    => 'Judul tidak boleh sama',
                 ]
             ],
+            'sampul' => [
+                'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'required' => 'Tidak Boleh Kosong',
+                    'uploaded' => 'Minimal upload 1 gambar',
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar',
+                ]
+            ],
             'gallerygambar' => [
                 'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 // 'rules' => 'is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
@@ -78,14 +88,25 @@ class Gallery extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $filegambar = $this->request->getFiles();
+
+        $sampulgallery = $this->request->getFile('sampul');
+        if ($sampulgallery->getError() == 4) {
+            $namasampul = 'default.jpg';
+        } else {
+            $namasampul = $sampulgallery->getRandomName();
+            $sampulgallery->move('img/sampul/', $namasampul);
+        }
         // $slug = url_title($this->request->getVar('judulgallery'), '-', true);
         $this->ordergallery->save([
             'users_id' => session()->get('users_id'),
             'judulgallery' => $this->request->getVar('judulgallery'),
             'sluggallery' => url_title($this->request->getVar('judulgallery'), '-', true),
-            'gstatus' => 1
+            'gstatus' => 1,
+            'sampul' => $namasampul,
         ]);
+
+        $filegambar = $this->request->getFiles();
+
         // mengambil id dari order
         $idorder = $this->ordergallery->getInsertID();
         foreach ($filegambar['gallerygambar'] as $i => $value) {
@@ -226,6 +247,7 @@ class Gallery extends BaseController
         } else {
             $rules = 'required|is_unique[ordergallery.judulgallery]';
         }
+        // dd($rules);
 
         if (!$this->validate([
             'judulgallery' => [
@@ -235,16 +257,38 @@ class Gallery extends BaseController
                     'is_unique'    => 'Judul tidak boleh sama',
                 ]
             ],
+            'sampul' => [
+                'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'required' => 'Tidak Boleh Kosong',
+                    'uploaded' => 'Minimal upload 1 gambar',
+                    'max_size' => 'Ukuran gambar terlalu besar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'mime_in' => 'yang anda pilih bukan gambar',
+                ]
+            ],
         ])) {
-            session()->setFlashdata('pesan', 'Error,Judul gagal diperbaharui');
+            session()->setFlashdata('pesan', 'Error,Data gagal diperbaharui');
             return redirect()->back();
         }
 
+        $sampulgallery = $this->request->getFile('sampul');
+        if ($sampulgallery->getError() == 4) {
+            $namasampul = $this->request->getVar('sampullama');
+        } else {
+            $namasampul = $sampulgallery->getRandomName();
+            $sampulgallery->move('img/sampul/', $namasampul);
+            if ($this->request->getVar('sampullama') != 'default.jpg') {
+                unlink('img/sampul/' . $this->request->getVar('sampullama'));
+            }
+        }
+        // dd($namasampul);
         $slug = url_title($this->request->getVar('judulgallery'), '-', true);
         $this->ordergallery->save([
             'idordergallery' => $idordergallery,
             'judulgallery' => $this->request->getVar('judulgallery'),
             'slug' => $slug,
+            'sampul' => $namasampul,
         ]);
         session()->setFlashdata('pesan', 'Success,Judul berhasil diperbaharui');
         return redirect()->to('/gallery');
@@ -264,6 +308,12 @@ class Gallery extends BaseController
                     unlink('img/gallery/' . $item->gallerygambar);
                 }
             }
+        }
+
+        $order = $this->ordergallery->find($idordergallery);
+        // dd($data['gambar']);
+        if ($order['sampul'] != 'default.jpg') {
+            unlink('img/sampul/' . $order['sampul']);
         }
 
         $data = $this->ordergallery->delete($idordergallery);

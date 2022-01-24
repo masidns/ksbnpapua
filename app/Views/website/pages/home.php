@@ -157,7 +157,7 @@
                 <?php if ($value->gstatus == 1) : ?>
                     <div class="col-lg-3 col-md-6 single-blog">
                         <div class="thumb">
-                            <img class="img-fluid" src="<?= base_url('img/gallery/' . $order[0 + 1]->gallerygambar); ?>" alt="">
+                            <img class="img-fluid" src="<?= base_url('img/sampul/' . $value->sampul); ?>" alt="">
                         </div>
                         <p class="date">10 Jan 2018</p>
                         <a href="#">

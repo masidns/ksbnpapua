@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="<?= base_url('assetsgallery/gallery-clean.css'); ?> ">
     <!-- new gallery -->
     <link rel="stylesheet" href="<?= base_url('assetsgallery/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('img/style.css') ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

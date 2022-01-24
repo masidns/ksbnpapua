@@ -130,6 +130,7 @@ class Videogallery extends BaseController
             'judulgallery' => $this->request->getVar('judulgallery'),
             'sluggallery' => $slug,
             'gstatus' => 2,
+            'sampul' => 'default.jpg',
         ]);
 
         $data = [

@@ -32,6 +32,7 @@ class Ksbn extends BaseController
         $data = [
             'news' => $this->news->getNews(),
             'video' => $this->video->getVideo(),
+            'foto' => $this->foto->getGallery(),
             // 'order' => $order,
             'order' => $this->order->getorder(),
         ];

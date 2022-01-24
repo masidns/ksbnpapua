@@ -46,9 +46,10 @@
                                         <tbody>
                                             <?php $key = 1 ?>
                                             <?php foreach ($order as $key => $value) : ?>
-                                                <?php if ($value->gstatus == 2) : ?>
+                                                <?php $nomor = $value->gstatus ?>
+                                                <?php if ($nomor == 2) : ?>
                                                     <tr>
-                                                        <td><?= $key++ ?></td>
+                                                        <td><?= $key + 1 ?></td>
                                                         <td><?= $value->judulgallery ?></td>
                                                         <td align="center">
                                                             <button type="button" class="btn btn-primary fa fa-eye" data-toggle="modal" data-target="#modal-lg-<?= $value->idordergallery; ?>">
