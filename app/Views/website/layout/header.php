@@ -25,9 +25,9 @@
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="<?= base_url('/ksbn'); ?>">Home</a></li>
-                    <li><a href="about.html">Profil</a></li>
+                    <li><a href="<?= base_url('/ksbn/profil'); ?>">Profil</a></li>
 
-                    <li><a href="blog-home.html">News</a></li>
+                    <li><a href="<?= base_url('/ksbn/news'); ?>">News</a></li>
                     <li class="menu-has-children"><a href="">Gallery</a>
                         <ul>
                             <li><a href="blog-single.html">Foto</a></li>

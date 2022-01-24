@@ -45,7 +45,7 @@
                                         </thead>
                                         <tbody>
                                             <?php $key = 1 ?>
-                                            <?php foreach ($order as $key => $value) : ?>
+                                            <?php foreach ($video as $key => $value) : ?>
                                                 <?php $nomor = $value->gstatus ?>
                                                 <?php if ($nomor == 2) : ?>
                                                     <tr>

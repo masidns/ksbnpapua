@@ -45,11 +45,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $i = 0 ?>
+                                            <?php $i = 1 ?>
                                             <?php foreach ($order as $key => $value) : ?>
                                                 <?php if ($value->gstatus == 1) : ?>
                                                     <tr>
-                                                        <td><?= $i + 1  ?></td>
+                                                        <td><?= $i++  ?></td>
                                                         <td class="text-center">
                                                             <img src="<?= base_url('img/sampul/' . $value->sampul)   ?>" class="getgambar" alt="">
                                                         </td>

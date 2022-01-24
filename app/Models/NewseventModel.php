@@ -60,4 +60,42 @@ class NewseventModel extends Model
             ->join('users', 'newsevents.users_id = users.users_id')
             ->getWhere(['slug' => $slug])->getRowObject();
     }
+
+    public function getTags($slug = false)
+    {
+        # code...
+        if ($slug == false) {
+            return $this->db->table('newsevents')
+                ->orderBy('newsevents.newsevents_id', 'DESC')
+                ->join('users', 'users.users_id = newsevents.users_id')
+                ->get(5, 0)->getResult();
+        }
+        return $this->db->table('newsevents')
+            ->join('users', 'newsevents.users_id = users.users_id')
+            ->getWhere(['slug' => $slug])->getRowObject();
+    }
+
+    public function berita($slug = false)
+    {
+        # code...
+        if ($slug == false) {
+            return $this->db->table('newsevents')
+                ->orderBy('newsevents.newsevents_id', 'DESC')
+                ->like('kategori', 1)
+                ->join('users', 'users.users_id = newsevents.users_id')
+                ->get(5, 0)->getResult();
+        }
+    }
+
+    public function pengumuman($slug = false)
+    {
+        # code...
+        if ($slug == false) {
+            return $this->db->table('newsevents')
+                ->orderBy('newsevents.newsevents_id', 'DESC')
+                ->like('kategori', 2)
+                ->join('users', 'users.users_id = newsevents.users_id')
+                ->get(5, 0)->getResult();
+        }
+    }
 }
