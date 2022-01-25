@@ -52,11 +52,11 @@
                                                         <td><?= $key + 1 ?></td>
                                                         <td><?= $value->judulgallery ?></td>
                                                         <td align="center">
-                                                            <button type="button" class="btn btn-primary fa fa-eye" data-toggle="modal" data-target="#modal-lg-<?= $value->idordergallery; ?>">
+                                                            <button type="button" class="btn btn-primary btn-sm fa fa-eye" data-toggle="modal" data-target="#modal-lg-<?= $value->idordergallery; ?>">
                                                             </button>
-                                                            <button type="button" class="btn btn-warning fa fa-edit" data-toggle="modal" data-target="#modal-default-edit-<?= $value->idordergallery; ?>">
+                                                            <button type="button" class="btn btn-warning btn-sm fa fa-edit" data-toggle="modal" data-target="#modal-default-edit-<?= $value->idordergallery; ?>">
                                                             </button>
-                                                            <a href="<?= base_url('/videogallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                            <a href="<?= base_url('/videogallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>

@@ -30,8 +30,8 @@
                     <li><a href="<?= base_url('/ksbn/news'); ?>">News</a></li>
                     <li class="menu-has-children"><a href="">Gallery</a>
                         <ul>
-                            <li><a href="blog-single.html">Foto</a></li>
-                            <li><a href="category.html">Video</a></li>
+                            <li><a href="<?= base_url('/ksbn/foto'); ?>">Foto</a></li>
+                            <li><a href="<?= base_url('/ksbn/video'); ?>">Video</a></li>
                         </ul>
                     </li>
                     <li><a href="<?= base_url('/auth'); ?>">LOGIN</a></li>

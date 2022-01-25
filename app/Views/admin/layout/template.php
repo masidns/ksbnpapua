@@ -24,11 +24,11 @@
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= base_url('assets'); ?>/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- new gallery -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" href="<?= base_url('assetsgallery/baguetteBox.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assetsgallery/gallery-grid.css'); ?> ">
     <link rel="stylesheet" href="<?= base_url('assetsgallery/gallery-clean.css'); ?> ">
-    <!-- new gallery -->
     <link rel="stylesheet" href="<?= base_url('assetsgallery/style.css') ?>">
+    <!-- new gallery -->
     <link rel="stylesheet" href="<?= base_url('img/style.css') ?>">
 </head>
 
@@ -45,11 +45,11 @@
         <!-- /.content-wrapper -->
 
         <footer class="main-footer">
-            <div class="float-right d-none d-sm-block">
+            <div class="float-center d-none d-sm-block">
                 <b>Version</b> 3.2.0-rc
             </div>
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
-            reserved.
+            <strong class="text-center">Copyright &copy; 2022 developed by <a href="https://adminlte.io">Octagon Cendrawasih Solution</a>.</strong>
+            <!-- copyright © 2022 - developed by Octagon Cendrawasih Solution -->
         </footer>
 
         <!-- Control Sidebar -->
@@ -85,7 +85,7 @@
     <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?= base_url('assets'); ?>/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <!-- new gallery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+    <script src="<?= base_url('assetsgallery/baguetteBox.min.js'); ?>"></script>
     <!-- new gallery -->
     <script type="text/javascript">
         // swall allert

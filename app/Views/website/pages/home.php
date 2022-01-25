@@ -159,17 +159,17 @@
                         <div class="thumb">
                             <img class="img-fluid" src="<?= base_url('img/sampul/' . $value->sampul); ?>" alt="">
                         </div>
-                        <p class="date">10 Jan 2018</p>
-                        <a href="#">
-                            <h4><?= $value->judulgallery; ?></h4>
+                        <!-- <p class="date">10 Jan 2018</p> -->
+                        <a href="#" class="">
+                            <h4 class="mt-2"><?= $value->judulgallery; ?></h4>
                         </a>
-                        <p>
+                        <!-- <p>
                             inappropriate behavior ipsum dolor sit amet, consectetur.
-                        </p>
-                        <div class="meta-bottom d-flex justify-content-between">
+                        </p> -->
+                        <!-- <div class="meta-bottom d-flex justify-content-between">
                             <p><span class="lnr lnr-heart"></span> 15 Likes</p>
                             <p><span class="lnr lnr-bubble"></span> 02 Comments</p>
-                        </div>
+                        </div> -->
                     </div>
                 <?php endif ?>
             <?php endforeach ?>

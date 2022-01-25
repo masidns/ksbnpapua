@@ -31,6 +31,14 @@
     <link rel="stylesheet" href="<?= base_url('assetsweb'); ?>/css/animate.min.css">
     <link rel="stylesheet" href="<?= base_url('assetsweb'); ?>/css/owl.carousel.css">
     <link rel="stylesheet" href="<?= base_url('assetsweb'); ?>/css/main.css">
+    <link rel="stylesheet" href="<?= base_url('img/style.css') ?>">
+    <!-- new gallery -->
+    <link rel="stylesheet" href="<?= base_url('assetsgallery/baguetteBox.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assetsgallery/gallery-grid.css'); ?> ">
+    <link rel="stylesheet" href="<?= base_url('assetsgallery/gallery-clean.css'); ?> ">
+    <link rel="stylesheet" href="<?= base_url('assetsgallery/style.css') ?>">
+    <!-- new gallery -->
+
 </head>
 
 <body>
@@ -177,6 +185,12 @@
     <script src="<?= base_url('assetsweb'); ?>/js/parallax.min.js"></script>
     <script src="<?= base_url('assetsweb'); ?>/js/mail-script.js"></script>
     <script src="<?= base_url('assetsweb'); ?>/js/main.js"></script>
+    <!-- new gallery -->
+    <script src="<?= base_url('assetsgallery/baguetteBox.min.js'); ?>"></script>
+    <!-- new gallery -->
+    <script>
+        baguetteBox.run('.tz-gallery');
+    </script>
 </body>
 
 </html>

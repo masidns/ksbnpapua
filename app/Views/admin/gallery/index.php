@@ -55,11 +55,11 @@
                                                         </td>
                                                         <td><?= $value->judulgallery ?></td>
                                                         <td class="text-center">
-                                                            <a href="<?= base_url('/gallery/detail/' . $value->sluggallery); ?>" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default-<?= $value->idordergallery; ?>">
+                                                            <a href="<?= base_url('/gallery/detail/' . $value->sluggallery); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-<?= $value->idordergallery; ?>">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <a href="<?= base_url('/gallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                            <a href="<?= base_url('/gallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>

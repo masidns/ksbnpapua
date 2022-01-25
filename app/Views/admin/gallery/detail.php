@@ -49,13 +49,13 @@
                                                         <div class="caption">
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <!-- <a href="" class="btn btn-warning btn-block"><i class="fa fa-edit"></i></a> -->
-                                                                    <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#modal-default-<?= $value->id; ?>">
+                                                                    <!-- <a href="" class="btn btn-warning btn-block btn-sm"><i class="fa fa-edit"></i></a> -->
+                                                                    <button type="button" class="btn btn-warning btn-block btn-sm" data-toggle="modal" data-target="#modal-default-<?= $value->id; ?>">
                                                                         <i class="fa fa-edit"></i>
                                                                     </button>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <a href="<?= base_url('gallery/deletefoto/' . $value->id); ?>" class="btn btn-danger btn-block"><i class="fa fa-trash"></i></a>
+                                                                    <a href="<?= base_url('gallery/deletefoto/' . $value->id); ?>" class="btn btn-danger btn-block btn-sm"><i class="fa fa-trash"></i></a>
                                                                 </div>
                                                             </div>
                                                         </div>

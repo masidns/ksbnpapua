@@ -85,15 +85,21 @@
                     <?php foreach ($tags as $key => $value) : ?>
                         <div class="blog-list mt-2">
                             <div class="single-recent-post d-flex flex-row">
-                                <div class="recent-thumb">
-                                    <img class="img-fluid" src="<?= base_url('img/news/' . $value->gambar); ?>" alt="">
-                                </div>
-                                <div class="recent-details">
-                                    <a href="<?= base_url('/ksbn/newsdetail/' . $value->slug); ?>">
-                                        <h4>
-                                            <?= $value->judul; ?>
-                                        </h4>
-                                    </a>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="recent-thumb">
+                                            <img class="img-fluid " src="<?= base_url('img/news/' . $value->gambar); ?>" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="recent-details">
+                                            <a href="<?= base_url('/ksbn/newsdetail/' . $value->slug); ?>">
+                                                <h4>
+                                                    <?= $value->judul; ?>
+                                                </h4>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

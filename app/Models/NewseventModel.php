@@ -61,7 +61,7 @@ class NewseventModel extends Model
             ->getWhere(['slug' => $slug])->getRowObject();
     }
 
-    public function getTags($slug = false)
+    public function getNewstags($slug = false)
     {
         # code...
         if ($slug == false) {

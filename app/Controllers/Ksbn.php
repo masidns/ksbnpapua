@@ -33,11 +33,11 @@ class Ksbn extends BaseController
         //
         // $order = $this->order->getorder();
         $data = [
-            'news' => $this->news->getTags(),
-            'video' => $this->video->getVideo(),
-            'foto' => $this->foto->getGallery(),
+            'news' => $this->news->getNewstags(),
+            'video' => $this->video->getVideotags(),
+            // 'foto' => $this->foto->getGallery(),
             // 'order' => $order,
-            'order' => $this->order->getorder(),
+            'order' => $this->order->getordertags(),
         ];
         // dd($data['order'][0]->gallerygambar);
         return view('website/pages/home', $data);
@@ -57,25 +57,27 @@ class Ksbn extends BaseController
         # code...
         $data = [
             'news' => $this->news->getNews(),
-            'tags' => $this->news->getTags(),
+            'tags' => $this->news->getNewstags(),
         ];
         return view('website/pages/news', $data);
     }
+
     public function newsdetail($slug)
     {
         # code...
         $data = [
             'news' => $this->news->getNews($slug),
-            'tags' => $this->news->getTags(),
+            'tags' => $this->news->getNewstags(),
         ];
         return view('website/pages/newsdetail', $data);
     }
+
     public function berita()
     {
         # code...
         $data = [
             'news' => $this->news->berita(),
-            'tags' => $this->news->getTags(),
+            'tags' => $this->news->getNewstags(),
         ];
         return view('website/pages/news', $data);
     }
@@ -85,8 +87,37 @@ class Ksbn extends BaseController
         # code...
         $data = [
             'news' => $this->news->berita(),
-            'tags' => $this->news->getTags(),
+            'tags' => $this->news->getNewstags(),
         ];
         return view('website/pages/news', $data);
+    }
+
+    public function foto()
+    {
+        # code...
+        $data = [
+            'order' => $this->order->getorder(),
+        ];
+        return view('website/pages/foto', $data);
+    }
+
+    public function fotodetail($sluggallery)
+    {
+        # code...
+        $data = [
+            'order' => $this->order->getorder($sluggallery),
+            'foto' => $this->foto->getGallery(),
+        ];
+        return view('website/pages/fotodetail', $data);
+    }
+
+    public function video()
+    {
+        # code...
+        $data = [
+            'video' => $this->video->getVideo(),
+            'tags' => $this->news->getNewstags(),
+        ];
+        return view('website/pages/video', $data);
     }
 }

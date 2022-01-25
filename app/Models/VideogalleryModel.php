@@ -57,4 +57,18 @@ class VideogalleryModel extends Model
             ->join('ordergallery', 'ordergallery.idordergallery = videogallery.idordergallery')
             ->get()->getRowObject();
     }
+    public function getVideotags($id = false)
+    {
+        # code...
+        if ($id == false) {
+            return $this->db->table('videogallery')
+                // ->select('ordergallery.*,videogallery.video')
+                ->orderBy('id', 'DESC')
+                ->join('ordergallery', 'ordergallery.idordergallery = videogallery.idordergallery')
+                ->get(9, 0)->getResult();
+        }
+        return $this->db->table('videogallery')
+            ->join('ordergallery', 'ordergallery.idordergallery = videogallery.idordergallery')
+            ->get()->getRowObject();
+    }
 }

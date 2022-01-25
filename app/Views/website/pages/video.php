@@ -9,9 +9,9 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                    News
+                    Gallery Video
                 </h1>
-                <p class="text-white link-nav"><a href="<?= base_url('/'); ?>">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="<?= base_url('/ksbn/news'); ?>"> News</a></p>
+                <p class="text-white link-nav"><a href="<?= base_url('/'); ?>">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="<?= base_url('/ksbn/video'); ?>"> Gallery Video</a></p>
             </div>
         </div>
     </div>
@@ -22,40 +22,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 post-list blog-post-list">
-                <?php foreach ($news as $key => $value) : ?>
+                <?php foreach ($video as $key => $value) : ?>
                     <div class="single-post mt-3">
-                        <img class="img-fluid" src="<?= base_url('img/news/' . $value->gambar); ?>" alt="">
-                        <ul class="tags">
-                            <li><a href="#"><?= $value->kategori == 1 ? 'Berita' : ($value->kategori == 2 ? 'Pengumuman' : ''); ?></a></li>
-                        </ul>
-                        <a href="<?= base_url('ksbn/newsdetail/' . $value->slug); ?>">
-                            <h1>
-                                <?= $value->judul; ?>
-                            </h1>
-                        </a>
-                        <p>
-                            <?php $text = word_limiter($value->keterangan, 75) ?>
-                            <?= $text; ?>
-                        </p>
-                        <div class="bottom-meta">
-                            <div class="user-details row align-items-center">
-                                <div class="comment-wrap col-lg-6">
-                                    <!-- <ul>
-                                        <li><a href="#"><span class="lnr lnr-heart"></span> 4 likes</a></li>
-                                        <li><a href="#"><span class="lnr lnr-bubble"></span> 06 Comments</a></li>
-                                    </ul> -->
-                                </div>
-                                <div class="social-wrap col-lg-6">
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                        </div>
+                        <iframe width="680" height="400" src="<?= $value->video; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
+                        <h1>
+                            <?= $value->judulgallery; ?>
+                        </h1>
                     </div>
                 <?php endforeach ?>
             </div>
