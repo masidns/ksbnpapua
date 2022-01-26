@@ -33,6 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
+        // 'username' => 'utvmn4ak_root',
+        // 'password' => 'Stimik1011',
+        // 'database' => 'utvmn4ak_ksbn_papua',
         'username' => 'root',
         'password' => '',
         'database' => 'ksbnpapua',

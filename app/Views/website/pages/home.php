@@ -18,7 +18,7 @@
 <!-- End banner Area -->
 
 <!-- Start quote Area -->
-<section class="quote-area section-gap">
+<!-- <section class="quote-area section-gap">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 quote-left">
@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- End quote Area -->
 
 
@@ -160,7 +160,7 @@
                             <img class="img-fluid" src="<?= base_url('img/sampul/' . $value->sampul); ?>" alt="">
                         </div>
                         <!-- <p class="date">10 Jan 2018</p> -->
-                        <a href="#" class="">
+                        <a href="<?= base_url('/ksbn/fotodetail/' . $value->sluggallery); ?>" class="">
                             <h4 class="mt-2"><?= $value->judulgallery; ?></h4>
                         </a>
                         <!-- <p>
