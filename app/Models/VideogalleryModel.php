@@ -65,7 +65,7 @@ class VideogalleryModel extends Model
                 // ->select('ordergallery.*,videogallery.video')
                 ->orderBy('id', 'DESC')
                 ->join('ordergallery', 'ordergallery.idordergallery = videogallery.idordergallery')
-                ->get(9, 0)->getResult();
+                ->get(4, 0)->getResult();
         }
         return $this->db->table('videogallery')
             ->join('ordergallery', 'ordergallery.idordergallery = videogallery.idordergallery')

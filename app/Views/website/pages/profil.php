@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-lg-6 quote-right">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore =u fugiat  cillum dolore eua pariatur.
                     </p>
                 </div>
             </div>
@@ -125,7 +125,11 @@
             <div class="col-lg-6 col-md-12 no-padding info-rigth">
                 <div class="info-content">
                     <h2 class="pb-30">Profile</h2>
-                    <?= $profil->profile; ?>
+                    <?php if (!empty($profil->profile)) : ?>
+                        <?= $profil->profile; ?>
+                    <?php else : ?>
+                        <h1>Data profil belum ada</h1>
+                    <?php endif ?>
                 </div>
             </div>
         </div>
@@ -146,7 +150,11 @@
             <div class="col-sm-5">
                 <div class="info-content">
                     <h1 class="text-center">VISI</h1>
-                    <?= $profil->visi; ?>
+                    <?php if (!empty($profil->visi)) : ?>
+                        <?= $profil->visi; ?>
+                    <?php else : ?>
+                        <h1>Visi KSBN Belum ada</h1>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="col-sm-2">
@@ -154,7 +162,11 @@
             <div class="col-sm-5">
                 <div class="info-content">
                     <h1 class="text-center">MISI</h1>
-                    <?= $profil->misi; ?>
+                    <?php if (!empty($profil->misi)) : ?>
+                        <?= $profil->misi; ?>
+                    <?php else : ?>
+                        <h1>Misi KSBN Belum ada</h1>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

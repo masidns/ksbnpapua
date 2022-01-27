@@ -31,31 +31,31 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'ksbn::index');
-$routes->get('/auth', 'auth::index');
+$routes->get('/', 'Ksbn::index');
+$routes->get('/auth', 'Auth::index');
 // profil
-$routes->get('/profil', 'profil::index', ['filter' => 'Authcek']);
-$routes->get('/profil/create', 'profil::create', ['filter' => 'Authcek']);
-$routes->post('/profil/save', 'profil::save', ['filter' => 'Authcek']);
-$routes->get('/profil/update/(:num)', 'profil::update/$1', ['filter' => 'Authcek']);
+$routes->get('/profil', 'Profil::index', ['filter' => 'Authcek']);
+$routes->get('/profil/create', 'Profil::create', ['filter' => 'Authcek']);
+$routes->post('/profil/save', 'Profil::save', ['filter' => 'Authcek']);
+$routes->get('/profil/update/(:num)', 'Profil::update/$1', ['filter' => 'Authcek']);
 // news
-$routes->get('/newsevent', 'newsevent::index', ['filter' => 'Authcek']);
-$routes->get('/newsevent/create', 'newsevent::create', ['filter' => 'Authcek']);
-$routes->get('/newsevent/detail/(:any)', 'newsevent::detail/$1', ['filter' => 'Authcek']);
-$routes->get('/newsevent/update/(:any)', 'newsevent::update/$1', ['filter' => 'Authcek']);
-$routes->post('/newsevent/save', 'newsevent::save', ['filter' => 'Authcek']);
-$routes->post('/newsevent/updating/(:any)', 'newsevent::updating/$1', ['filter' => 'Authcek']);
-$routes->delete('/newsevent/delete/(:num)', 'newsevent::detail/$1', ['filter' => 'Authcek']);
+$routes->get('/newsevent', 'Newsevent::index', ['filter' => 'Authcek']);
+$routes->get('/newsevent/create', 'Newsevent::create', ['filter' => 'Authcek']);
+$routes->get('/newsevent/detail/(:any)', 'Newsevent::detail/$1', ['filter' => 'Authcek']);
+$routes->get('/newsevent/update/(:any)', 'Newsevent::update/$1', ['filter' => 'Authcek']);
+$routes->post('/newsevent/save', 'Newsevent::save', ['filter' => 'Authcek']);
+$routes->post('/newsevent/updating/(:any)', 'Newsevent::updating/$1', ['filter' => 'Authcek']);
+$routes->delete('/newsevent/delete/(:num)', 'Newsevent::detail/$1', ['filter' => 'Authcek']);
 // gallery
-$routes->get('/gallery', 'gallery::index', ['filter' => 'Authcek']);
-$routes->get('/gallery/create', 'gallery::create', ['filter' => 'Authcek']);
-$routes->post('/gallery/updatefoto/$id', 'gallery::updatefoto/$1', ['filter' => 'Authcek']);
-$routes->get('/videogallery', 'videogallery::index', ['filter' => 'Authcek']);
+$routes->get('/gallery', 'Gallery::index', ['filter' => 'Authcek']);
+$routes->get('/gallery/create', 'Gallery::create', ['filter' => 'Authcek']);
+$routes->post('/gallery/updatefoto/$id', 'Gallery::updatefoto/$1', ['filter' => 'Authcek']);
+$routes->get('/videogallery', 'Videogallery::index', ['filter' => 'Authcek']);
 
 
 // web ksbn
-$routes->get('/berita', 'ksbn::berita');
-$routes->get('/pengumuman', 'ksbn::pengumuman');
+$routes->get('/berita', 'Ksbn::berita');
+$routes->get('/pengumuman', 'Ksbn::pengumuman');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

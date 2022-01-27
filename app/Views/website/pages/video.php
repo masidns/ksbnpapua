@@ -24,8 +24,9 @@
             <div class="col-lg-8 post-list blog-post-list">
                 <?php foreach ($video as $key => $value) : ?>
                     <div class="single-post mt-3">
-                        <iframe width="680" height="400" src="<?= $value->video; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe>
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="<?= $value->video; ?>" frameborder="0" allowfullscreen></iframe>
+                        </div>
                         <h1>
                             <?= $value->judulgallery; ?>
                         </h1>

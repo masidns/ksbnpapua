@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-6 top-head-left">
                 <ul>
-                    <li><a href="#">Komite Seni Budaya Nusantara Papua</a></li>
+                    <li><a href="/">Komite Seni Budaya Nusantara Papua</a></li>
                     <!-- <li><a href="#">Buy Ticket</a></li> -->
                 </ul>
             </div>
@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index.html"><img src="<?= base_url('assetsweb'); ?>/img/android-icon-36x36.png" alt="" title="" /> <b>KSBN PAPUA</b></a>
+                <a href="/"><img src="<?= base_url('assetsweb'); ?>/img/android-icon-36x36.png" alt="" title="" /> <b>KSBN PAPUA</b></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">

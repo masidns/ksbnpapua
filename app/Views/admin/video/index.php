@@ -136,7 +136,9 @@
                     <div class="modal-body">
                         <?php foreach ($video as $key => $vvalue) : ?>
                             <?php if ($value->idordergallery == $vvalue->idordergallery) : ?>
-                                <iframe width="765" height="480" src="<?= $vvalue->video; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <div class="video-container">
+                                    <iframe width="560" height="315" src="<?= $vvalue->video; ?>" frameborder="0" allowfullscreen></iframe>
+                                </div>
                             <?php endif ?>
                         <?php endforeach ?>
                     </div>

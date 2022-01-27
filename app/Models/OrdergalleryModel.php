@@ -69,7 +69,7 @@ class OrdergalleryModel extends Model
                 ->orderBy('idordergallery', 'DESC')
                 ->join('users', 'users.users_id = ordergallery.users_id')
                 // ->join('gallery', 'gallery.id = ordergallery.idordergallery')
-                ->get(4, 0)->getResult();
+                ->get(9, 0)->getResult();
         }
         return $this->db->table('ordergallery')
             ->join('users', 'users.users_id = ordergallery.users_id')
