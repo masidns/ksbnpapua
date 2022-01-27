@@ -211,7 +211,7 @@ class Gallery extends BaseController
                 $value->move('img/gallery/', $newname[$i]);
                 $this->gallery->save([
                     'gallerygambar' => $newname[$i],
-                    'idordergallery' => $idordergallery,
+                    'idordergallery' => $this->request->getVar('idorder'),
                 ]);
             }
         }

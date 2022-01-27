@@ -132,6 +132,7 @@
     <div class="modal-dialog">
         <form action="<?= base_url('/gallery/insertfoto/' . $value->idordergallery) ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
+            <input type="hidden" name="idorder" value="<?= $order->idordergallery; ?>">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Tambah gambar</h4>
