@@ -59,7 +59,7 @@
                                                             <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-default-<?= $value->idordergallery; ?>">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <a href="<?= base_url('/gallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                            <a href="<?= base_url('/gallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger btn-sm btn-hapus"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>

@@ -55,7 +55,7 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <a href="<?= base_url('gallery/deletefoto/' . $value->id); ?>" class="btn btn-danger btn-block btn-sm"><i class="fa fa-trash"></i></a>
+                                                                    <a href="<?= base_url('gallery/deletefoto/' . $value->id); ?>" class="btn btn-danger btn-block btn-sm btn-hapus"><i class="fa fa-trash"></i></a>
                                                                 </div>
                                                             </div>
                                                         </div>

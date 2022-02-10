@@ -56,7 +56,7 @@
                                                             </button>
                                                             <button type="button" class="btn btn-warning btn-sm fa fa-edit" data-toggle="modal" data-target="#modal-default-edit-<?= $value->idordergallery; ?>">
                                                             </button>
-                                                            <a href="<?= base_url('/videogallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                                            <a href="<?= base_url('/videogallery/delete/' . $value->idordergallery); ?>" class="btn btn-danger btn-sm btn-hapus"><i class="fa fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 <?php endif ?>
