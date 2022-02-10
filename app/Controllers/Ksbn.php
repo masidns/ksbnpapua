@@ -86,7 +86,7 @@ class Ksbn extends BaseController
     {
         # code...
         $data = [
-            'news' => $this->news->berita(),
+            'news' => $this->news->pengumuman(),
             'tags' => $this->news->getNewstags(),
         ];
         return view('website/pages/news', $data);

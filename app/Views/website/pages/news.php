@@ -34,7 +34,7 @@
                             </h1>
                         </a>
                         <p>
-                            <?php $text = word_limiter($value->keterangan, 75) ?>
+                            <?php $text = character_limiter($value->keterangan, 2000) ?>
                             <?= $text; ?>
                         </p>
                         <div class="bottom-meta">

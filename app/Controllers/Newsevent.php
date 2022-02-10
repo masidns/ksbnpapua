@@ -74,7 +74,7 @@ class Newsevent extends BaseController
                 ]
             ],
             'gambar' => [
-                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[gambar,10240]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'max_size' => 'Ukuran gambar terlalu besar',
                     'is_image' => 'yang anda pilih bukan gambar',
@@ -137,7 +137,7 @@ class Newsevent extends BaseController
                 ]
             ],
             'gambar' => [
-                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[gambar,10240]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'max_size' => 'Ukuran gambar terlalu besar',
                     'is_image' => 'yang anda pilih bukan gambar',

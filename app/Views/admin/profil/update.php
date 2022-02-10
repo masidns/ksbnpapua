@@ -22,7 +22,7 @@
     <section class="content">
 
         <div class="container-fluid">
-            <form action="<?= base_url('/profil/updating') . '/' . $profil->id; ?>" method="post">
+            <form action="<?= base_url('/profil/updating') . '/' . $profil->id; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="row">
                     <div class="col-12">
@@ -40,7 +40,26 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-5">
+                                        <input type="hidden" name="gambarLama" value="<?= $profil->fotoprofils; ?>">
+                                        <div class="form-group row">
+                                            <div class="col-sm-11">
+                                                <!-- <br><br><br> -->
+                                                <label>Foto Profile</label>
+                                                <img src="<?= base_url('/img/profils/' . $profil->fotoprofils); ?> " class="img-thumbnail img-preview">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ">
+                                            <div class="col-sm-11">
+                                                <input type="file" name="fotoprofils" id="gambar" class="custom-file-input <?= ($validation->hasError('fotoprofils')) ? 'is-invalid' : ''; ?>" onchange="previewImg()">
+                                                <label class="custom-file-label" for="fotoprofils"><?= $profil->fotoprofils; ?></label>
+                                                <div id="validationServer03Feedback" class="invalid-feedback">
+                                                    <?= $validation->getError('fotoprofils'); ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7">
                                         <div class="form-group">
                                             <!-- <label for="exampleFormControlTextarea1">Profil</label> -->
                                             <textarea id="summernote" class="summernote form-control <?= ($validation->hasError('profil')) ? 'is-invalid' : '' ?>" name="profil" rows="3"><?= (old('profil')) ? old('profil') : $profil->profile; ?></textarea>

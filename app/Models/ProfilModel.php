@@ -19,6 +19,7 @@ class ProfilModel extends Model
         'visi',
         'misi',
         'users_id',
+        'fotoprofils',
     ];
 
     // Dates

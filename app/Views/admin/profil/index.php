@@ -20,7 +20,6 @@
 
     <!-- Main content -->
     <section class="content">
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -37,7 +36,16 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <?= $profil->profile; ?>
+                            <div class="row no-gutters">
+                                <div class="col-md-5">
+                                    <img height="250" src="<?= base_url('img/profils/' . $profil->fotoprofils); ?>" alt="...">
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="card-body">
+                                        <?= $profil->profile; ?>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

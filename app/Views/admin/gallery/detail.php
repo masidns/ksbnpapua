@@ -130,7 +130,7 @@
 <!-- /.modal tambah-->
 <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
-        <form action="<?= base_url('/gallery/insertfoto/' . $value->idordergallery) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url('/gallery/insertfoto/' . $order->idordergallery) ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <input type="hidden" name="idorder" value="<?= $order->idordergallery; ?>">
             <div class="modal-content">

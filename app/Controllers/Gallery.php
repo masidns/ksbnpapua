@@ -63,7 +63,7 @@ class Gallery extends BaseController
                 ]
             ],
             'sampul' => [
-                'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[sampul,10240]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'required' => 'Tidak Boleh Kosong',
                     'uploaded' => 'Minimal upload 1 gambar',
@@ -73,7 +73,7 @@ class Gallery extends BaseController
                 ]
             ],
             'gallerygambar' => [
-                'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,10240]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 // 'rules' => 'is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'required' => 'Tidak Boleh Kosong',
@@ -143,7 +143,7 @@ class Gallery extends BaseController
         # code...
         if (!$this->validate([
             'gallerygambar' => [
-                'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,10240]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 // 'rules' => 'is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'required' => 'Tidak Boleh Kosong',
@@ -188,7 +188,7 @@ class Gallery extends BaseController
         // dd($detail->idordergallery);
         if (!$this->validate([
             'gallerygambar' => [
-                'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,1024]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'uploaded[gallerygambar]|max_size[gallerygambar,10240]|is_image[gallerygambar]|mime_in[gallerygambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'required' => 'Tidak Boleh Kosong',
                     'uploaded' => 'Minimal upload 1 gambar',
@@ -224,10 +224,15 @@ class Gallery extends BaseController
     public function deletefoto($id)
     {
         # code...
-        $data = $this->gallery->getGallery($id);
+        $data = $this->gallery->find($id);
         // dd($data->id, $data->gallerygambar);
-        if (!empty($data)) {
-            unlink('img/gallery/' . $data->gallerygambar);
+        // dd($data->gallerygambar);
+        // if (!empty($data)) {
+        //     unlink('img/gallery/' . $data->gallerygambar);
+        // }
+        // dd($data['gallerygambar']);
+        if ($data['gallerygambar'] != 'default.jpg') {
+            unlink('img/gallery/' . $data['gallerygambar']);
         }
 
         $delete = $this->gallery->delete($id);
@@ -258,7 +263,7 @@ class Gallery extends BaseController
                 ]
             ],
             'sampul' => [
-                'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[sampul,10240]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
                 'errors' => [
                     'required' => 'Tidak Boleh Kosong',
                     'uploaded' => 'Minimal upload 1 gambar',
@@ -318,7 +323,7 @@ class Gallery extends BaseController
 
         $data = $this->ordergallery->delete($idordergallery);
         if ($data) {
-            session()->setFlashdata('pesan', 'Success,Data gagal dihapus');
+            session()->setFlashdata('pesan', 'Success,Data berhasil dihapus');
         } else {
             session()->setFlashdata('pesan', 'Error,Data gagal dihapus');
         }

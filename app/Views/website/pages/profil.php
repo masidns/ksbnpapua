@@ -17,94 +17,6 @@
 </section>
 <!-- End banner Area -->
 
-<!-- Start quote Area -->
-<!-- <section class="quote-area pt-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 quote-left">
-                    <h1>
-                        <span>Music</span> gives soul to the universe, <br>
-                        wings to the <span>mind</span>, flight <br>
-                        to the <span>imagination</span>.
-                    </h1>
-                </div>
-                <div class="col-lg-6 quote-right">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore =u fugiat  cillum dolore eua pariatur.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!-- End quote Area -->
-
-
-<!-- Start service Area -->
-<!-- <section class="service-area section-gap" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="single-service">
-                        <span class="lnr lnr-clock"></span>
-                        <h4>Openning Hours</h4>
-                        <p>
-                            Mon - Fri: 10.00am to 05.00pm
-                            Sat: 12.00pm to 03.00 pm
-                            Sunday Closed
-                        </p>
-                        <div class="overlay">
-                            <div class="text">
-                                <p>
-                                    Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features.that we use in life
-                                </p>
-                                <a href="#" class="text-uppercase primary-btn">Buy ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-service">
-                        <span class="lnr lnr-rocket"></span>
-                        <h4>Ongoing Exhibitions</h4>
-                        <p>
-                            Mon - Fri: 10.00am to 05.00pm
-                            Sat: 12.00pm to 03.00 pm
-                            Sunday Closed
-                        </p>
-                        <div class="overlay">
-                            <div class="text">
-                                <p>
-                                    Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features.that we use in life
-                                </p>
-                                <a href="#" class="text-uppercase primary-btn">Buy ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="single-service">
-                        <span class="lnr lnr-briefcase"></span>
-                        <h4>Openning Events</h4>
-                        <p>
-                            Mon - Fri: 10.00am to 05.00pm
-                            Sat: 12.00pm to 03.00 pm
-                            Sunday Closed
-                        </p>
-                        <div class="overlay">
-                            <div class="text">
-                                <p>
-                                    Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features that we use in life Here, I focus on a range of items and features.that we use in life
-                                </p>
-                                <a href="#" class="text-uppercase primary-btn">Buy ticket</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!-- End service Area -->
-
 <!-- Start about info Area -->
 <section class="section-gap info-area" id="about">
     <div class="container">
@@ -119,7 +31,9 @@
         <div class="single-info row mt-40">
             <div class="col-lg-6 col-md-12 mt-120 text-center no-padding info-left">
                 <div class="info-thumb">
-                    <img src="<?= base_url('assetsweb/img/pages/about-img.jpg'); ?>" class="img-fluid" alt="">
+                    <?php if (!empty($profil->fotoprofils)) : ?>
+                        <img src="<?= base_url('img/profils/' . $profil->fotoprofils); ?>" class="img-fluid" alt="">
+                    <?php endif ?>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 no-padding info-rigth">
@@ -164,6 +78,7 @@
                     <h1 class="text-center">MISI</h1>
                     <?php if (!empty($profil->misi)) : ?>
                         <?= $profil->misi; ?>
+
                     <?php else : ?>
                         <h1>Misi KSBN Belum ada</h1>
                     <?php endif ?>
